@@ -1,6 +1,6 @@
 # Knowledge directory - organized structure
 knowledge/papers/
-knowledge/reports/
+!knowledge/reports/
 
 # Keep ALL skills
 .agents/*

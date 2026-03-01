@@ -1,0 +1,24 @@
+# Ignore everything
+*
+
+# But not these files
+!*.md
+!.gitignore
+
+# Keep these directories
+!.agents/
+!.agents/skills/
+
+# Ignore temporary data
+knowledge/day_*
+knowledge/kimi_*
+knowledge/kimi_summaries/
+knowledge/*_failures.log
+
+# Keep final outputs
+!knowledge/structured_analysis_20.md
+!knowledge/process_summary.md
+
+# Keep skills
+!.agents/
+!.agents/skills/

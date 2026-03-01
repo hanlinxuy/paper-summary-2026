@@ -1,0 +1,43 @@
+{# 学术摘要模板 - 标准学术格式 #}
+---
+**论文ID**: {{ paper_id | default("N/A", true) }}
+
+## {{ title | default("未提供标题", true) }}
+
+**作者**: {{ authors | default("未提供", true) }}
+
+---
+
+### 背景与动机
+{{ background | default("*待补充：论文研究背景与动机*", true) }}
+
+### 核心方法
+{{ method | default("*待补充：论文提出的核心方法或技术*", true) }}
+
+### 主要结果
+{{ results | default("*待补充：论文的主要实验结果*", true) }}
+
+### 结论与展望
+{{ conclusion | default("*待补充：论文结论及未来研究方向*", true) }}
+
+---
+
+{% if original_abstract %}
+### 原文摘要
+> {{ original_abstract }}
+{% endif %}
+
+{% if kimi_summary %}
+### AI摘要
+{{ kimi_summary }}
+{% endif %}
+
+{% if pdf_summary %}
+### PDF提取内容
+{{ pdf_summary }}
+{% endif %}
+
+{% if local_comment %}
+### 本地评论
+{{ local_comment }}
+{% endif %}

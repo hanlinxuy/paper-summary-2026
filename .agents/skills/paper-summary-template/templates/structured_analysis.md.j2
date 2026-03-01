@@ -1,0 +1,48 @@
+{# 结构化分析模板 - 针对端侧芯片工程师视角 #}
+---
+**论文ID**: {{ paper_id | default("N/A", true) }}
+
+## {{ title | default("未提供标题", true) }}
+
+**作者**: {{ authors | default("未提供", true) }}
+
+---
+
+### 基本信息
+
+- **核心方法**: {{ method | default("*待补充*", true) }}
+- **解决的问题**: {{ problem | default("*待补充：论文试图解决的核心问题是什么*", true) }}
+
+---
+
+### 效果评估（数据支撑）
+
+{{ results | default("*待补充：列出关键实验数据、性能指标、对比结果*", true) }}
+
+**关键数据点**:
+- 性能提升: __________
+- 资源消耗: __________
+- 对比基准: __________
+
+---
+
+### 端侧价值评估
+
+- **文章可信度**: {{ credibility_score | default("?", true) }}/10 - {{ credibility_comment | default("*待评估：实验设计是否严谨、数据是否可信*", true) }}
+- **文章重要性**: {{ importance_score | default("?", true) }}/10 - {{ importance_comment | default("*待评估：在学术/工业界的影响力*", true) }}
+- **对端侧价值**: {{ edge_value_score | default("?", true) }}/10 - {{ edge_value_comment | default("*待评估：对PC/手机/机器人芯片的意义*", true) }}
+
+---
+
+### 端侧落地分析
+
+**技术可行性**:
+{{ edge_feasibility | default("*待分析：算法复杂度、内存需求、计算量是否适合端侧部署*", true) }}
+
+**对端侧未来的影响**:
+{{ edge_future_impact | default("*待分析：该论文技术可能如何影响端侧AI发展、芯片设计趋势*", true) }}
+
+**落地挑战**:
+{{ edge_challenges | default("*待分析：功耗、散热、成本、生态等实际落地障碍*", true) }}
+
+---

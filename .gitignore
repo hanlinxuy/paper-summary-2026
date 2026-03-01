@@ -1,24 +1,19 @@
-# Ignore everything
-*
-
-# But not these files
-!*.md
-!.gitignore
-
-# Keep these directories
-!.agents/
-!.agents/skills/
-
-# Ignore temporary data
-knowledge/day_*
-knowledge/kimi_*
-knowledge/kimi_summaries/
-knowledge/*_failures.log
-
-# Keep final outputs
+# Ignore everything in knowledge except specific files
+knowledge/*
 !knowledge/structured_analysis_20.md
 !knowledge/process_summary.md
 
-# Keep skills
-!.agents/
+# Ignore .agents except paper-summary-template
+.agents/*
 !.agents/skills/
+.agents/skills/*
+!.agents/skills/paper-summary-template/
+.agents/skills/paper-summary-template/*
+!.agents/skills/paper-summary-template/SKILL.md
+!.agents/skills/paper-summary-template/templates/
+
+# Ignore other temp files
+.sisyphus/
+*.py
+*.png
+*.md

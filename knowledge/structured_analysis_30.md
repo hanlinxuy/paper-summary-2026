@@ -1,7 +1,6 @@
----
-**论文ID**: 2601.22607
+# From Self-Evolving Synthetic Data to Verifiable-Reward RL: Post-Training Multi-turn Interactive Tool-Using Agents
 
-## From Self-Evolving Synthetic Data to Verifiable-Reward RL: Post-Training Multi-turn Interactive Tool-Using Agents
+**论文ID**: 2601.22607
 
 **作者**: Jiaxuan Gao, Jiaao Chen, Chuyi He, Wei-Chen Wang, Shusheng Xu, Hanrui Wang, Di Jin, Yi Wu
 
@@ -27,11 +26,9 @@
 - **文章重要性**: 9/10 - 首次系统性解决交互式工具使用RL的数据和信号噪声问题
 - **对端侧价值**: 7/10 - 面向Agent场景，对端侧部署有一定参考价值
 
----
+# A Unified View of Attention and Residual Sinks: Outlier-Driven Rescaling is Essential for Transformer Training
 
 **论文ID**: 2601.22966
-
-## A Unified View of Attention and Residual Sinks: Outlier-Driven Rescaling is Essential for Transformer Training
 
 **作者**: Zihan Qiu*, Zeyu Huang*, Kaiyue Wen*, Peng Jin*, Bo Zheng*, Yuxin Zhou, Haofeng Huang, Zekun Wang, Xiao Li, Huaqing Zhang, Yang Xu, Haoran Lian, Siqi Zhang, Rui Men, Jianwei Zhang, Ivan Titov, Dayiheng Liu*, Jingren Zhou, Junyang Lin*
 
@@ -57,11 +54,9 @@
 - **文章重要性**: 8/10 - 提供新的理论视角，对模型训练和量化有直接指导意义
 - **对端侧价值**: 9/10 - GatedNorm仅增加2%参数，显著提升量化鲁棒性，对端侧部署价值高
 
----
+# RLAnything: Forge Environment, Policy, and Reward Model in Completely Dynamic RL System
 
 **论文ID**: 2602.02488
-
-## RLAnything: Forge Environment, Policy, and Reward Model in Completely Dynamic RL System
 
 **作者**: Yinjie Wang, Tianbao Xie, Ke Shen, Mengdi Wang, Ling Yang
 
@@ -87,11 +82,9 @@ OSWorld实验：RLAnything在In-Domain达52.8%（提升+12.4%），OOD达22.0%�
 - **文章重要性**: 8/10 - 提出统一RL框架，有较强创新性
 - **对端侧价值**: 6/10 - 框架复杂，端侧部署挑战大
 
----
+# PixelGen: Pixel Diffusion Beats Latent Diffusion with Perceptual Loss
 
 **论文ID**: 2602.02493
-
-## PixelGen: Pixel Diffusion Beats Latent Diffusion with Perceptual Loss
 
 **作者**: Zehong Ma, Ruihan Xu, Shiliang Zhang
 
@@ -117,11 +110,9 @@ ImageNet-256：PixelGen FID 7.53，显著优于JiT（23.67）和DDT-L/2（10.00�
 - **文章重要性**: 9/10 - 首次证明像素扩散+感知监督可击败潜在扩散
 - **对端侧价值**: 7/10 - 生成质量优秀，但端侧推理效率仍是挑战
 
----
+# Generative Modeling via Drifting
 
 **论文ID**: 2602.04770
-
-## Generative Modeling via Drifting
 
 **作者**: Mingyang Deng, He Li, Tianhong Li, Yilun Du, Kaiming He
 
@@ -147,11 +138,9 @@ ImageNet 256×256单步生成：Drifting Model L/2达FID 1.54（vs DiT-XL/2多�
 - **文章重要性**: 9/10 - 开辟全新生成范式，原生单步生成
 - **对端侧价值**: 8/10 - 单步推理对端侧友好，计算成本低
 
----
+# Reinforced Attention Learning
 
 **论文ID**: 2602.04884
-
-## Reinforced Attention Learning
 
 **作者**: Bangzheng Li*, Chen Qu, Jianmo Ni, Ian Miao, Liu Yang, Xingyu Fu, Muhao Chen, Derek Zhiyuan Cheng, Zhong Cheng
 
@@ -177,11 +166,9 @@ Image QA：RAL在MMBench+4.2%、MMMU+3.8%、SEED+5.1%、MathVista+6.3%。Video Q
 - **文章重要性**: 8/10 - 范式转换，从优化token转向优化attention
 - **对端侧价值**: 7/10 - 对多模态模型训练有指导意义
 
----
+# Context Forcing: Consistent Autoregressive Video Generation with Long Context
 
 **论文ID**: 2602.06028
-
-## Context Forcing: Consistent Autoregressive Video Generation with Long Context
 
 **作者**: 待确认
 
@@ -207,11 +194,9 @@ Image QA：RAL在MMBench+4.2%、MMMU+3.8%、SEED+5.1%、MathVista+6.3%。Video Q
 - **文章重要性**: 8/10 - 长视频生成重要进展
 - **对端侧价值**: 6/10 - 长上下文计算量大，端侧部署挑战大
 
----
+# DFlash: Block Diffusion for Flash Speculative Decoding
 
 **论文ID**: 2602.06036
-
-## DFlash: Block Diffusion for Flash Speculative Decoding
 
 **作者**: Jian Chen, Yesheng Liang, Zhijian Liu
 
@@ -237,11 +222,9 @@ Qwen3-8B：Greedy decoding 4.9×加速（vs baseline），2.4×加速（vs EAGLE
 - **文章重要性**: 9/10 - 首次基于扩散的推测解码框架
 - **对端侧价值**: 9/10 - 推理加速效果显著，对端侧部署价值高
 
----
+# DreamDojo: A Generalist Robot World Model from Large-Scale Human Videos
 
 **论文ID**: 2602.06949
-
-## DreamDojo: A Generalist Robot World Model from Large-Scale Human Videos
 
 **作者**: Shenyuan Gao, William Liang, Kaiyuan Zheng, Ayaan Malik等
 
@@ -267,11 +250,9 @@ Qwen3-8B：Greedy decoding 4.9×加速（vs baseline），2.4×加速（vs EAGLE
 - **文章重要性**: 9/10 - 首个基于大规模人类视频的机器人世界模型
 - **对端侧价值**: 8/10 - 实时推理能力对端侧友好
 
----
+# InftyThink+: Effective and Efficient Infinite-Horizon Reasoning via Reinforcement Learning
 
 **论文ID**: 2602.06960
-
-## InftyThink+: Effective and Efficient Infinite-Horizon Reasoning via Reinforcement Learning
 
 **作者**: 待确认
 
@@ -297,11 +278,9 @@ AIME24：Vanilla RL +12.08%，InftyThink+ +21.46%。AIME25推理延迟降低32.8
 - **文章重要性**: 8/10 - 首次将端到端RL引入迭代推理范式
 - **对端侧价值**: 9/10 - 显著降低推理延迟，对端侧价值高
 
----
+# SkillRL: Evolving Agents via Recursive Skill-Augmented Reinforcement Learning
 
 **论文ID**: 2602.08234
-
-## SkillRL: Evolving Agents via Recursive Skill-Augmented Reinforcement Learning
 
 **作者**: 待确认
 
@@ -327,11 +306,9 @@ ALFWorld：SKILLRL达89.9%，超越GPT-4o（48.0%）达41.9%，超越SimpleMem+G
 - **文章重要性**: 8/10 - 首次提出递归技能演化机制
 - **对端侧价值**: 7/10 - 7B参数模型超越闭源，对端侧友好
 
----
+# Autoregressive Image Generation with Masked Bit Modeling
 
 **论文ID**: 2602.09024
-
-## Autoregressive Image Generation with Masked Bit Modeling
 
 **作者**: 待确认
 
@@ -357,11 +334,9 @@ ImageNet-256：BAR-L达gFID 0.99，超越所有现有方法；BAR-B以415M参数
 - **文章重要性**: 9/10 - 突破离散视觉生成的可扩展性瓶颈
 - **对端侧价值**: 8/10 - 推理速度快，对端侧友好
 
----
+# UI-Venus-1.5 Technical Report
 
 **论文ID**: 2602.09082
-
-## UI-Venus-1.5 Technical Report
 
 **作者**: 待确认
 
@@ -387,11 +362,9 @@ VenusBench-GD 75.0%，ScreenSpot-Pro 69.6%，AndroidWorld 77.6%（超越MAI-UI-3
 - **文章重要性**: 8/10 - GUI智能代理重要进展
 - **对端侧价值**: 7/10 - 面向GUI场景，端侧价值视具体应用而定
 
----
+# Agent World Model: Infinity Synthetic Environments for Agentic Reinforcement Learning
 
 **论文ID**: 2602.10090
-
-## Agent World Model: Infinity Synthetic Environments for Agentic Reinforcement Learning
 
 **作者**: 待确认
 
@@ -417,11 +390,9 @@ BFCLv3：Base 53.83，Simulator 52.53，EnvScaler 36.83，AWM 65.94。τ²-bench
 - **文章重要性**: 8/10 - 首个全自动可执行环境合成框架
 - **对端侧价值**: 6/10 - 面向Agent训练，端侧部署挑战大
 
----
+# GRU-Mem: When to Memorize and When to Stop - Gated Recurrent Memory for Long-Context Reasoning
 
 **论文ID**: 2602.10560
-
-## GRU-Mem: When to Memorize and When to Stop - Gated Recurrent Memory for Long-Context Reasoning
 
 **作者**: 待确认
 
@@ -447,11 +418,9 @@ BFCLv3：Base 53.83，Simulator 52.53，EnvScaler 36.83，AWM 65.94。τ²-bench
 - **文章重要性**: 8/10 - 首次系统研究记忆更新与终止决策的联合优化
 - **对端侧价值**: 9/10 - 400%推理加速对端侧价值高
 
----
+# Why Does RL Generalize Better Than SFT? A Data-Centric Perspective on VLM Post-Training
 
 **论文ID**: 2602.10815
-
-## Why Does RL Generalize Better Than SFT? A Data-Centric Perspective on VLM Post-Training
 
 **作者**: 待确认
 
@@ -477,11 +446,9 @@ BFCLv3：Base 53.83，Simulator 52.53，EnvScaler 36.83，AWM 65.94。τ²-bench
 - **文章重要性**: 9/10 - 首次从数据构成角度解释RL与SFT的泛化差距
 - **对端侧价值**: 9/10 - DC-SFT使SFT达到或超越RL的泛化性能，效率高
 
----
+# On-Policy Context Distillation for Language Models
 
 **论文ID**: 2602.12275
-
-## On-Policy Context Distillation for Language Models
 
 **作者**: 待确认
 
@@ -507,11 +474,9 @@ BFCLv3：Base 53.83，Simulator 52.53，EnvScaler 36.83，AWM 65.94。τ²-bench
 - **文章重要性**: 8/10 - 首次将在线策略蒸馏范式专门适配于上下文内化
 - **对端侧价值**: 7/10 - 对上下文持久化有参考价值
 
----
+# Agentic Test-Time Scaling for WebAgents
 
 **论文ID**: 2602.12276
-
-## Agentic Test-Time Scaling for WebAgents
 
 **作者**: 待确认
 
@@ -537,11 +502,9 @@ WebArena-Lite：ReAct (N=1) 38.8%，多数投票(N=10) 43.2%，始终仲裁 44.0
 - **文章重要性**: 8/10 - 首次确立长程智能体测试中计算缩放的基本原则
 - **对端侧价值**: 8/10 - 2.3倍Token节省对端侧友好
 
----
+# SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks
 
 **论文ID**: 2602.12670
-
-## SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks
 
 **作者**: 待确认
 
@@ -567,11 +530,9 @@ WebArena-Lite：ReAct (N=1) 38.8%，多数投票(N=10) 43.2%，始终仲裁 44.0
 - **文章重要性**: 9/10 - 首次证明模型无法可靠自生成有效Skills
 - **对端侧价值**: 8/10 - 确立"少即是多"设计原则
 
----
+# SLA2: Sparse-Linear Attention with Learnable Routing and QAT
 
 **论文ID**: 2602.12675
-
-## SLA2: Sparse-Linear Attention with Learnable Routing and QAT
 
 **作者**: 待确认
 
@@ -597,11 +558,9 @@ WebArena-Lite：ReAct (N=1) 38.8%，多数投票(N=10) 43.2%，始终仲裁 44.0
 - **文章重要性**: 8/10 - 首个基于梯度优化的可学习稀疏注意力路由器
 - **对端侧价值**: 9/10 - 97%稀疏度+量化对端侧部署价值高
 
----
+# BitDance: Scalable Autoregressive Image Generation with Binary Visual Tokens
 
 **论文ID**: 2602.14041
-
-## BitDance: Scalable Autoregressive Image Generation with Binary Visual Tokens
 
 **作者**: 待确认
 
@@ -627,11 +586,9 @@ ImageNet 256×256：BitDance-H 1.0B参数达FID 1.24；BitDance-B-4x以5.4倍更
 - **文章重要性**: 9/10 - 词汇表扩展至2^256的创新尝试
 - **对端侧价值**: 7/10 - 推理吞吐量高，但端侧资源需求大
 
----
+# Sphere Encoder: Efficient Image Generation with Spherical Latent Space
 
 **论文ID**: 2602.15030
-
-## Sphere Encoder: Efficient Image Generation with Spherical Latent Space
 
 **作者**: 待确认
 
@@ -657,11 +614,9 @@ CIFAR-10：1步gFID 18.68，4步gFID 2.72。ImageNet 256×256：Sphere-L 950M参
 - **文章重要性**: 8/10 - 球面潜在空间创新
 - **对端侧价值**: 9/10 - 单步/少步高效生成对端侧友好
 
----
+# GLM-5: Efficient Agentic Engineering with Sparse Attention
 
 **论文ID**: 2602.15763
-
-## GLM-5: Efficient Agentic Engineering with Sparse Attention
 
 **作者**: 智谱AI与清华大学
 
@@ -687,11 +642,9 @@ SWE-bench Verified 77.8%，SWE-bench Multilingual 73.3%，BrowseComp 75.9%，Ter
 - **文章重要性**: 9/10 - 首个开放权重模型的agentic engineering能力
 - **对端侧价值**: 8/10 - 稀疏注意力对端侧友好，国产芯片适配有价值
 
----
+# DreamZero: World Action Model for Robot Generalization
 
 **论文ID**: 2602.15922
-
-## DreamZero: World Action Model for Robot Generalization
 
 **作者**: 待确认
 
@@ -717,11 +670,9 @@ SWE-bench Verified 77.8%，SWE-bench Multilingual 73.3%，BrowseComp 75.9%，Ter
 - **文章重要性**: 9/10 - 首次实现14B视频扩散模型的实时机器人控制
 - **对端侧价值**: 8/10 - 7Hz控制对端侧机器人有价值
 
----
+# Unified Latents: Learning Latent Representations for Diffusion Models
 
 **论文ID**: 2602.17270
-
-## Unified Latents: Learning Latent Representations for Diffusion Models
 
 **作者**: 待确认
 
@@ -747,11 +698,9 @@ ImageNet-512：UL gFID 1.4。文本到图像：UL gFID 4.1，优于Pixel扩散�
 - **文章重要性**: 8/10 - 提出可解释的比特率控制机制
 - **对端侧价值**: 7/10 - 框架统一适用于图像和视频
 
----
+# JPmHC: Jacobian-Spectrum Preserving Manifold-Constrained Hyper-Connections
 
 **论文ID**: 2602.18308
-
-## JPmHC: Jacobian-Spectrum Preserving Manifold-Constrained Hyper-Connections
 
 **作者**: 待确认
 
@@ -777,11 +726,9 @@ ARC-AGI基准：Cayley变体Pass@1 40.5%（vs Sinkhorn 34.1%提升1.19倍），�
 - **文章重要性**: 8/10 - 首次系统论证双随机约束的谱病理机制
 - **对端侧价值**: 7/10 - 计算效率优化对端侧有价值
 
----
+# Autonomous AI Agent Security: Emergent Failure Modes in Real Deployment
 
 **论文ID**: 2602.20021
-
-## Autonomous AI Agent Security: Emergent Failure Modes in Real Deployment
 
 **作者**: 待确认
 
@@ -807,11 +754,9 @@ ARC-AGI基准：Cayley变体Pass@1 40.5%（vs Sinkhorn 34.1%提升1.19倍），�
 - **文章重要性**: 9/10 - 为NIST AI代理标准提供实证基础
 - **对端侧价值**: 9/10 - 安全问题对端侧部署至关重要
 
----
+# Nemotron-Terminal: Data Engineering for LLM Terminal Agents
 
 **论文ID**: 2602.21193
-
-## Nemotron-Terminal: Data Engineering for LLM Terminal Agents
 
 **作者**: NVIDIA
 
@@ -837,11 +782,9 @@ Terminal-Bench 2.0：Nemotron-Terminal-8B 13.0%（5倍提升），14B 20.2%，32
 - **文章重要性**: 9/10 - 系统验证数据工程策略影响
 - **对端侧价值**: 9/10 - 证明高质量轨迹数据比单纯参数规模更关键
 
----
+# Solaris: Multiplayer Video World Model in Minecraft
 
 **论文ID**: 2602.22208
-
-## Solaris: Multiplayer Video World Model in Minecraft
 
 **作者**: 待确认
 
@@ -867,11 +810,9 @@ Terminal-Bench 2.0：Nemotron-Terminal-8B 13.0%（5倍提升），14B 20.2%，32
 - **文章重要性**: 8/10 - 首个多人视频世界模型
 - **对端侧价值**: 6/10 - Minecraft场景，端侧价值有限
 
----
+# Fine-Grained Multi-Agent LLM Trading System
 
 **论文ID**: 2602.23330
-
-## Fine-Grained Multi-Agent LLM Trading System
 
 **作者**: 待确认
 

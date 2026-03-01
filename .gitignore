@@ -11,9 +11,11 @@ knowledge/*
 .agents/skills/paper-summary-template/*
 !.agents/skills/paper-summary-template/SKILL.md
 !.agents/skills/paper-summary-template/templates/
+!.agents/skills/paper-summary-template/scripts/
+.agents/skills/paper-summary-template/scripts/*
+!.agents/skills/paper-summary-template/scripts/README.md
+!.agents/skills/paper-summary-template/scripts/*.py
 
 # Ignore other temp files
 .sisyphus/
-*.py
 *.png
-*.md

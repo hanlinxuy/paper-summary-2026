@@ -2,6 +2,9 @@
 knowledge/*
 !knowledge/structured_analysis_20.md
 !knowledge/process_summary.md
+!knowledge/structured_analysis_30.md
+!knowledge/final_report_feb-2026.md
+!knowledge/summary_*.md
 
 # Keep ALL skills
 .agents/*

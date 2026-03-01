@@ -3,18 +3,11 @@ knowledge/*
 !knowledge/structured_analysis_20.md
 !knowledge/process_summary.md
 
-# Ignore .agents except paper-summary-template
+# Keep ALL skills
 .agents/*
 !.agents/skills/
 .agents/skills/*
-!.agents/skills/paper-summary-template/
-.agents/skills/paper-summary-template/*
-!.agents/skills/paper-summary-template/SKILL.md
-!.agents/skills/paper-summary-template/templates/
-!.agents/skills/paper-summary-template/scripts/
-.agents/skills/paper-summary-template/scripts/*
-!.agents/skills/paper-summary-template/scripts/README.md
-!.agents/skills/paper-summary-template/scripts/*.py
+!.agents/skills/*/
 
 # Ignore other temp files
 .sisyphus/

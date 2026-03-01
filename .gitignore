@@ -1,10 +1,6 @@
-# Ignore everything in knowledge except specific files
-knowledge/*
-!knowledge/structured_analysis_20.md
-!knowledge/process_summary.md
-!knowledge/structured_analysis_30.md
-!knowledge/final_report_feb-2026.md
-!knowledge/summary_*.md
+# Knowledge directory - organized structure
+knowledge/papers/
+knowledge/reports/
 
 # Keep ALL skills
 .agents/*

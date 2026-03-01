@@ -128,13 +128,18 @@ def parse_html_qa(html_content: str) -> Optional[Dict[str, str]]:
 │   ├── kimi-summary-extractor/
 │   ├── papers-cool-filter/
 │   └── read-arxiv-paper/
-├── knowledge/               # Paper data (gitignored except specific files)
-│   ├── kimi_summaries/      # Kimi Q&A summaries (JSON)
-│   ├── day_*.json           # Daily paper lists
-│   └── selected_papers_*.json
+├── knowledge/               # Paper data
+│   ├── papers/             # 30篇论文TeX分析 (gitignored)
+│   └── reports/            # 报告 (tracked in git)
+│       ├── structured_analysis_30.md
+│       └── final_report_feb-2026.md
 ├── .venv/                   # Virtual environment
 └── AGENTS.md                # This file
 ```
+
+**Git规则**:
+- `knowledge/papers/` - 本地生成，不上传
+- `knowledge/reports/` - 需上传到Git
 
 ---
 
@@ -192,3 +197,4 @@ def parse_html_qa(html_content: str) -> Optional[Dict[str, str]]:
 3. **Data is gitignored** - Only scripts and templates are versioned
 4. **Output is ephemeral** - Generated summaries can be regenerated
 5. **Chinese content** - Many paper titles/summaries are in Chinese
+6. **Markdown格式** - 不要使用YAML frontmatter (---)，直接用 # 标题开头

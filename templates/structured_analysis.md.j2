@@ -7,7 +7,7 @@
 ### 基本信息
 
 - **作者**: {{ authors | default("未提供", true) }}
-- **机构**: {{ affiliation | default("未提供", true) }}
+- **机构**: {{ affiliation | default("未提供", true) }} *（使用简化中文，如：清华、北大、字节、华为、MIT、Stanford等）*
 - **arXiv**: {{ paper_id | default("N/A", true) }}
 
 
@@ -26,5 +26,4 @@
 
 - **文章可信度**: {{ credibility_score | default("?", true) }}/10 - {{ credibility_comment | default("*实验设计严谨性、数据可信度*", true) }}
 - **文章重要性**: {{ importance_score | default("?", true) }}/10 - {{ importance_comment | default("*学术/工业界影响力*", true) }}
-- **实用价值**: {{ edge_value_score | default("?", true) }}/10 - {{ edge_value_comment | default("*实际应用价值*", true) }}
-
+- **端侧设备实用价值**: {{ edge_devices_impact | default("*待补充：评分/X - 手机：相关性+场景+可行性。移动PC：相关性+场景+可行性。机器人：相关性+场景+可行性。优先级：高/中/低。挑战：关键难点*", true) }}

@@ -65,9 +65,70 @@ def calculate_quality_score(summary):
     return min(100, score)  # Cap at 100
 
 
-def calculate_total_score(heat_score, quality_score):
-    """Calculate total score: 60% heat + 40% quality"""
-    return 0.6 * heat_score + 0.4 * quality_score
+def calculate_edge_score(title, abstract):
+    """Calculate edge relevance score based on keywords"""
+    if abstract is None:
+        abstract = ""
+
+    text = (title + " " + abstract).lower()
+
+    edge_keywords = [
+        "edge",
+        "mobile",
+        "on-device",
+        "efficient",
+        "tiny",
+        "lightweight",
+        "quantization",
+        "pruning",
+        "distillation",
+        "compression",
+        "inference",
+        "latency",
+        "real-time",
+        "low-power",
+    ]
+
+    score = 0
+    for keyword in edge_keywords:
+        if keyword in text:
+            score += 10
+
+    return min(100, score)
+
+
+def detect_architecture(title, abstract):
+    """Detect model architecture from title and abstract"""
+    if abstract is None:
+        abstract = ""
+
+    text = (title + " " + abstract).lower()
+
+    architectures = []
+
+    if "transformer" in text or "attention" in text:
+        architectures.append("Transformer")
+    if "moe" in text or "mixture of expert" in text:
+        architectures.append("MoE")
+    if "diffusion" in text:
+        architectures.append("Diffusion")
+    if "mamba" in text or "ssm" in text or "state space" in text:
+        architectures.append("Mamba/SSM")
+    if "rnn" in text or "lstm" in text or "gru" in text:
+        architectures.append("RNN")
+    if "cnn" in text or "convolution" in text:
+        architectures.append("CNN")
+    if "vit" in text or "vision transformer" in text:
+        architectures.append("ViT")
+    if "vla" in text or "vision-language-action" in text:
+        architectures.append("VLA")
+
+    return "+".join(architectures) if architectures else "Other"
+
+
+def calculate_total_score(heat_score, edge_score):
+    """Calculate total score: 70% heat + 30% edge"""
+    return 0.7 * heat_score + 0.3 * edge_score
 
 
 def main():
@@ -99,16 +160,14 @@ def main():
 
         if summary is None:
             missing_summaries.append(arxiv_id)
-            # Papers without summaries get 0 quality score
             quality_score = 0
         else:
             quality_score = calculate_quality_score(summary)
 
-        # Calculate heat score
         heat_score = calculate_heat_score(paper["index"])
-
-        # Calculate total score
-        total_score = calculate_total_score(heat_score, quality_score)
+        edge_score = calculate_edge_score(paper["title"], paper.get("abstract", ""))
+        architecture = detect_architecture(paper["title"], paper.get("abstract", ""))
+        total_score = calculate_total_score(heat_score, edge_score)
 
         scored_papers.append(
             {
@@ -121,6 +180,8 @@ def main():
                 "url": paper["url"],
                 "heat_score": heat_score,
                 "quality_score": quality_score,
+                "edge_score": edge_score,
+                "architecture": architecture,
                 "total_score": total_score,
                 "kimi_summary": summary,
             }
@@ -141,12 +202,12 @@ def main():
         paper["rank"] = i
 
     # Print top 20 summary
-    print("\n" + "=" * 80)
+    print("\n" + "=" * 100)
     print("TOP 20 PAPERS")
-    print("=" * 80)
+    print("=" * 100)
     for paper in top_20:
         print(
-            f"{paper['rank']:2}. {paper['total_score']:5.1f} | H:{paper['heat_score']:5.1f} Q:{paper['quality_score']:5.1f} | {paper['arxiv_id']} | {paper['title'][:50]}..."
+            f"{paper['rank']:2}. {paper['total_score']:5.1f} | H:{paper['heat_score']:5.1f} Q:{paper['quality_score']:5.1f} E:{paper['edge_score']:5.1f} | {paper['architecture']:15} | {paper['arxiv_id']} | {paper['title'][:40]}..."
         )
 
     # Save to JSON
@@ -178,7 +239,7 @@ def generate_markdown(papers):
 
 > 日期范围: 2026-02-20 至 2026-02-27 (6个工作日)
 > 候选总数: 146篇
-> 筛选方式: 热度排序(60%) + Kimi摘要质量(40%)
+> 筛选方式: 热度排序(70%) + 端侧相关性(30%)
 > 最终选出: 20篇
 
 ---
@@ -193,8 +254,9 @@ def generate_markdown(papers):
             md += f" 等{len(paper['authors'])}人"
         md += "\n\n"
         md += f"**分类**: {', '.join(paper['subjects'])}\n\n"
+        md += f"**模型架构**: {paper['architecture']}\n\n"
         md += f"**热度排名**: #{paper['index']} ({paper['date']})\n\n"
-        md += f"**综合得分**: {paper['total_score']:.1f}/100 (热度:{paper['heat_score']:.1f} + 质量:{paper['quality_score']:.1f})\n\n"
+        md += f"**综合得分**: {paper['total_score']:.1f}/100 (热度:{paper['heat_score']:.1f} + 端侧:{paper['edge_score']:.1f})\n\n"
 
         # Add Kimi summary if available
         if paper["kimi_summary"]:

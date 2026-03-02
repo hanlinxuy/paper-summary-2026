@@ -101,12 +101,16 @@ for paper in papers:
         
         任务：
         1. 相关性评分 (1-10)
-        2. 推荐理由 (一句话中文)
-        3. 摘要翻译成中文 (保留专业术语)
+        2. 端侧相关性评分 (1-10): 该技术对手机/移动PC/机器人的潜在价值
+        3. 模型架构判断: Transformer/MoE/RNN/CNN/Diffusion/其他
+        4. 推荐理由 (一句话中文)
+        5. 摘要翻译成中文 (保留专业术语)
         
         返回JSON格式：
         {{
             "score": int,
+            "edge_relevance": int,
+            "architecture": str,
             "reason": str,
             "abstract_cn": str
         }}
@@ -120,8 +124,10 @@ for paper in papers:
 - 评估包含：
   1. **关键词匹配分数**: 标题/摘要中包含关键词的数量
   2. **AI相关性评分**: 使用LLM评估论文与用户关注领域的相关性(1-10分)
-  3. **推荐理由生成**: 用一句话说明为什么推荐这篇论文
-  4. **摘要翻译**: 同步完成中文翻译
+  3. **端侧相关性评分**: 评估对手机/移动PC/机器人的潜在价值(1-10分)
+  4. **模型架构判断**: Transformer/MoE/RNN/CNN/Diffusion/其他
+  5. **推荐理由生成**: 用一句话说明为什么推荐这篇论文
+  6. **摘要翻译**: 同步完成中文翻译
 
 ### Step 5: 收集并发结果并筛选
 
@@ -137,16 +143,22 @@ for task_id in task_ids:
 # 筛选高价值论文
 high_value_papers = [
     paper for paper, result in zip(papers, results)
-    if result["score"] >= 6
+    if result["score"] >= 6 or result["edge_relevance"] >= 7
 ]
 ```
 
-筛选标准：
+筛选标准（满足任一）：
 - AI相关性评分 >= 6
+- 端侧相关性评分 >= 7（优先关注端侧落地价值）
 - 关键词匹配数 >= 2
 - 或用户手动标记为感兴趣
 
 按综合分数排序后取 Top N。
+
+**综合分数计算**:
+```
+综合分 = 0.7 × 热度 + 0.3 × 端侧相关性
+```
 
 ### Step 6: 生成Markdown报告
 
@@ -233,6 +245,9 @@ high_value_papers = [
 | 训练优化 | training, efficient, acceleration |
 | 记忆/缓存 | memory, cache, kv |
 | LLM通用 | llm, llms, language, model |
+| **端侧相关** | edge, mobile, on-device, efficient, tiny, lightweight |
+| **模型架构** | transformer, diffusion, mamba, rnn, cnn, vit |
+| **机器人/VLA** | robot, vla, embodied, manipulation, navigation |
 
 ## 注意事项
 

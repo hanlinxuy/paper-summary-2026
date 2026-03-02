@@ -1,0 +1,422 @@
+{
+  "date_range": "2026-02-01 to 2026-02-28",
+  "total_candidates": 30,
+  "selected_count": 30,
+  "scoring": "热度70% + 端侧相关性30%",
+  "selected_papers": [
+    {
+      "arxiv_id": "2601.22275",
+      "title": "VMonarch: Efficient Video Diffusion Transformers with Structured Attention",
+      "architecture": "Transformer+Diffusion+Video",
+      "heat_score": 100,
+      "edge_score": 24,
+      "matched_keywords": [
+        "efficient",
+        "attention",
+        "flash"
+      ],
+      "total_score": 77.2,
+      "credibility": 8,
+      "importance": 9,
+      "edge_value": 9,
+      "rank": 1
+    },
+    {
+      "arxiv_id": "2601.22379",
+      "title": "SPLA: Block Sparse Plus Linear Attention for Long Context Modeling",
+      "architecture": "Transformer",
+      "heat_score": 97,
+      "edge_score": 16,
+      "matched_keywords": [
+        "sparse",
+        "attention"
+      ],
+      "total_score": 72.7,
+      "credibility": 9,
+      "importance": 9,
+      "edge_value": 8,
+      "rank": 2
+    },
+    {
+      "arxiv_id": "2602.00743",
+      "title": "Unknown",
+      "architecture": "VLA/Robot",
+      "heat_score": 94,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 65.8,
+      "credibility": 8,
+      "importance": 8,
+      "edge_value": 6,
+      "rank": 3
+    },
+    {
+      "arxiv_id": "2602.00807",
+      "title": "Unknown",
+      "architecture": "VLA/Robot+3D",
+      "heat_score": 91,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 63.7,
+      "credibility": 8,
+      "importance": 9,
+      "edge_value": 8,
+      "rank": 4
+    },
+    {
+      "arxiv_id": "2602.02276",
+      "title": "Unknown",
+      "architecture": "Other",
+      "heat_score": 88,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 61.6,
+      "credibility": 9,
+      "importance": 10,
+      "edge_value": 8,
+      "rank": 5
+    },
+    {
+      "arxiv_id": "2602.02488",
+      "title": "RLAnything: Forge Environment, Policy, and Reward Model in Completely Dynamic RL System",
+      "architecture": "Other",
+      "heat_score": 85,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 59.5,
+      "credibility": 8,
+      "importance": 9,
+      "edge_value": 5,
+      "rank": 6
+    },
+    {
+      "arxiv_id": "2602.03922",
+      "title": "Online Vector Quantized Attention",
+      "architecture": "Transformer+Mamba",
+      "heat_score": 79,
+      "edge_score": 8,
+      "matched_keywords": [
+        "attention"
+      ],
+      "total_score": 57.7,
+      "credibility": 8,
+      "importance": 8,
+      "edge_value": 7,
+      "rank": 7
+    },
+    {
+      "arxiv_id": "2602.03907",
+      "title": "Unknown",
+      "architecture": "3D",
+      "heat_score": 82,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 57.4,
+      "credibility": 9,
+      "importance": 8,
+      "edge_value": 7,
+      "rank": 8
+    },
+    {
+      "arxiv_id": "2602.05847",
+      "title": "OmniVideo-R1: Reinforcing Audio-visual Reasoning with Query Intention and Modality Attention",
+      "architecture": "Transformer+Reasoning+Video",
+      "heat_score": 70,
+      "edge_score": 16,
+      "matched_keywords": [
+        "optimization",
+        "attention"
+      ],
+      "total_score": 53.8,
+      "credibility": 8,
+      "importance": 9,
+      "edge_value": 8,
+      "rank": 9
+    },
+    {
+      "arxiv_id": "2602.05014",
+      "title": "DeepRead: Document Structure-Aware Reasoning to Enhance Agentic Search",
+      "architecture": "Agent+Reasoning",
+      "heat_score": 76,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 53.2,
+      "credibility": 8,
+      "importance": 8,
+      "edge_value": 9,
+      "rank": 10
+    },
+    {
+      "arxiv_id": "2602.05192",
+      "title": "First Proof",
+      "architecture": "Other",
+      "heat_score": 73,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 51.1,
+      "credibility": 9,
+      "importance": 9,
+      "edge_value": 8,
+      "rank": 11
+    },
+    {
+      "arxiv_id": "2602.06052",
+      "title": "Rethinking Memory Mechanisms of Foundation Agents in the Second Half: A Survey",
+      "architecture": "Agent+Memory",
+      "heat_score": 67,
+      "edge_score": 8,
+      "matched_keywords": [
+        "memory"
+      ],
+      "total_score": 49.3,
+      "credibility": 9,
+      "importance": 9,
+      "edge_value": 8,
+      "rank": 12
+    },
+    {
+      "arxiv_id": "2602.07451",
+      "title": "基本信息",
+      "architecture": "Transformer",
+      "heat_score": 61,
+      "edge_score": 8,
+      "matched_keywords": [
+        "attention"
+      ],
+      "total_score": 45.1,
+      "credibility": 8,
+      "importance": 9,
+      "edge_value": 8,
+      "rank": 13
+    },
+    {
+      "arxiv_id": "2602.07145",
+      "title": "Convex Dominance in Deep Learning I: A Scaling Law of Loss and Learning Rate",
+      "architecture": "Other",
+      "heat_score": 64,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 44.8,
+      "credibility": 9,
+      "importance": 9,
+      "edge_value": 9,
+      "rank": 14
+    },
+    {
+      "arxiv_id": "2602.09082",
+      "title": "UI-Venus-1.5 Technical Report",
+      "architecture": "Agent",
+      "heat_score": 55,
+      "edge_score": 8,
+      "matched_keywords": [
+        "mobile"
+      ],
+      "total_score": 40.9,
+      "credibility": 8,
+      "importance": 9,
+      "edge_value": 9,
+      "rank": 15
+    },
+    {
+      "arxiv_id": "2602.09057",
+      "title": "Unknown",
+      "architecture": "Other",
+      "heat_score": 58,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 40.6,
+      "credibility": 9,
+      "importance": 8,
+      "edge_value": 7,
+      "rank": 16
+    },
+    {
+      "arxiv_id": "2602.10161",
+      "title": "Unknown",
+      "architecture": "Other",
+      "heat_score": 52,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 36.4,
+      "credibility": 8,
+      "importance": 8,
+      "edge_value": 9,
+      "rank": 17
+    },
+    {
+      "arxiv_id": "2602.10177",
+      "title": "Towards Autonomous Mathematics Research",
+      "architecture": "Other",
+      "heat_score": 49,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 34.3,
+      "credibility": 9,
+      "importance": 9,
+      "edge_value": 8,
+      "rank": 18
+    },
+    {
+      "arxiv_id": "2602.11185",
+      "title": "Spectra: Rethinking Optimizers for LLMs Under Spectral Anisotropy",
+      "architecture": "Other",
+      "heat_score": 46,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 32.2,
+      "credibility": 8,
+      "importance": 9,
+      "edge_value": 8,
+      "rank": 19
+    },
+    {
+      "arxiv_id": "2602.11220",
+      "title": "Patch the Distribution Mismatch: RL Rewriting Agent for Stable Off-Policy SFT",
+      "architecture": "Agent",
+      "heat_score": 43,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 30.1,
+      "credibility": 8,
+      "importance": 8,
+      "edge_value": 6,
+      "rank": 20
+    },
+    {
+      "arxiv_id": "2602.12316",
+      "title": "Unknown",
+      "architecture": "Other",
+      "heat_score": 40,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 28.0,
+      "credibility": 8,
+      "importance": 9,
+      "edge_value": 8,
+      "rank": 21
+    },
+    {
+      "arxiv_id": "2602.13344",
+      "title": "FireRed-Image-Edit-1.0 Technical Report",
+      "architecture": "Transformer+Diffusion",
+      "heat_score": 37,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 25.9,
+      "credibility": 8,
+      "importance": 9,
+      "edge_value": 9,
+      "rank": 22
+    },
+    {
+      "arxiv_id": "2602.15060",
+      "title": "Unknown",
+      "architecture": "Transformer",
+      "heat_score": 34,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 23.8,
+      "credibility": 8,
+      "importance": 9,
+      "edge_value": 9,
+      "rank": 23
+    },
+    {
+      "arxiv_id": "2602.16742",
+      "title": "DeepVision-103K: A Visually Diverse, Broad-Coverage, and Verifiable Mathematical Dataset for Multimodal Reasoning",
+      "architecture": "Reasoning",
+      "heat_score": 28,
+      "edge_score": 8,
+      "matched_keywords": [
+        "flash"
+      ],
+      "total_score": 22.0,
+      "credibility": 8,
+      "importance": 9,
+      "edge_value": 9,
+      "rank": 24
+    },
+    {
+      "arxiv_id": "2602.15872",
+      "title": "Unknown",
+      "architecture": "Other",
+      "heat_score": 31,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 21.7,
+      "credibility": 8,
+      "importance": 8,
+      "edge_value": 8,
+      "rank": 25
+    },
+    {
+      "arxiv_id": "2602.21221",
+      "title": "Latent Context Compilation: Distilling Long Context into Compact Portable Memory",
+      "architecture": "Memory",
+      "heat_score": 19,
+      "edge_score": 24,
+      "matched_keywords": [
+        "compact",
+        "memory",
+        "kv"
+      ],
+      "total_score": 20.5,
+      "credibility": 8,
+      "importance": 9,
+      "edge_value": 9,
+      "rank": 26
+    },
+    {
+      "arxiv_id": "2602.18495",
+      "title": "Unknown",
+      "architecture": "Other",
+      "heat_score": 25,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 17.5,
+      "credibility": 8,
+      "importance": 8,
+      "edge_value": 9,
+      "rank": 27
+    },
+    {
+      "arxiv_id": "2602.20399",
+      "title": "GeoPT: Scaling Physics Simulation via Lifted Geometric Pre-Training",
+      "architecture": "Other",
+      "heat_score": 22,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 15.4,
+      "credibility": 9,
+      "importance": 9,
+      "edge_value": 8,
+      "rank": 28
+    },
+    {
+      "arxiv_id": "2602.21224",
+      "title": "Make Every Draft Count: Hidden State based Speculative Decoding",
+      "architecture": "Other",
+      "heat_score": 16,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 11.2,
+      "credibility": 8,
+      "importance": 9,
+      "edge_value": 7,
+      "rank": 29
+    },
+    {
+      "arxiv_id": "2602.22273",
+      "title": "FIRE: A Comprehensive Benchmark for Financial Intelligence and Reasoning Evaluation",
+      "architecture": "Reasoning",
+      "heat_score": 13,
+      "edge_score": 0,
+      "matched_keywords": [],
+      "total_score": 9.1,
+      "credibility": 8,
+      "importance": 9,
+      "edge_value": 6,
+      "rank": 30
+    }
+  ]
+}

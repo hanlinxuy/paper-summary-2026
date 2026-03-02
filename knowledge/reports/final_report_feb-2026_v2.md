@@ -2,8 +2,8 @@
 
 > **报告生成时间**: 2026-03-02
 > **数据来源**: papers.cool (cs.CL, cs.LG, cs.AI, cs.CV)
-> **筛选范围**: 2026-02-01 至 2026-02-28 (19天有数据)
-> **候选论文**: 566篇
+> **筛选范围**: 2026-02-01 至 2026-02-28
+> **筛选方式**: 热度70% + 端侧相关性30%
 > **核心论文**: 30篇
 
 ---
@@ -16,16 +16,16 @@
 4. [Any3D-VLA: Enhancing VLA Robustness via Diverse Point Clouds](#paper-2602.00807) - [2602.00807](https://arxiv.org/abs/2602.00807)
 5. [Kimi K2.5: Visual Agentic Intelligence](#paper-2602.02276) - [2602.02276](https://arxiv.org/abs/2602.02276)
 6. [RLAnything: Forge Environment, Policy, and Reward Model in Completely Dynamic RL System](#paper-2602.02488) - [2602.02488](https://arxiv.org/abs/2602.02488)
-7. [HY3D-Bench: Generation of 3D Assets](#paper-2602.03907) - [2602.03907](https://arxiv.org/abs/2602.03907)
-8. [Online Vector Quantized Attention](#paper-2602.03922) - [2602.03922](https://arxiv.org/abs/2602.03922)
-9. [DeepRead: Document Structure-Aware Reasoning to Enhance Agentic Search](#paper-2602.05014) - [2602.05014](https://arxiv.org/abs/2602.05014)
-10. [First Proof](#paper-2602.05192) - [2602.05192](https://arxiv.org/abs/2602.05192)
-11. [OmniVideo-R1: Reinforcing Audio-visual Reasoning with Query Intention and Modality Attention](#paper-2602.05847) - [2602.05847](https://arxiv.org/abs/2602.05847)
+7. [Online Vector Quantized Attention](#paper-2602.03922) - [2602.03922](https://arxiv.org/abs/2602.03922)
+8. [HY3D-Bench: Generation of 3D Assets](#paper-2602.03907) - [2602.03907](https://arxiv.org/abs/2602.03907)
+9. [OmniVideo-R1: Reinforcing Audio-visual Reasoning with Query Intention and Modality Attention](#paper-2602.05847) - [2602.05847](https://arxiv.org/abs/2602.05847)
+10. [DeepRead: Document Structure-Aware Reasoning to Enhance Agentic Search](#paper-2602.05014) - [2602.05014](https://arxiv.org/abs/2602.05014)
+11. [First Proof](#paper-2602.05192) - [2602.05192](https://arxiv.org/abs/2602.05192)
 12. [Rethinking Memory Mechanisms of Foundation Agents in the Second Half: A Survey](#paper-2602.06052) - [2602.06052](https://arxiv.org/abs/2602.06052)
-13. [Convex Dominance in Deep Learning I: A Scaling Law of Loss and Learning Rate](#paper-2602.07145) - [2602.07145](https://arxiv.org/abs/2602.07145)
-14. [DLLM Agent: See Farther, Run Faster](#paper-2602.07451) - [2602.07451](https://arxiv.org/abs/2602.07451)
-15. [SVD-Preconditioned Gradient Descent Method for Solving Nonlinear Least Squares Problems](#paper-2602.09057) - [2602.09057](https://arxiv.org/abs/2602.09057)
-16. [UI-Venus-1.5 Technical Report](#paper-2602.09082) - [2602.09082](https://arxiv.org/abs/2602.09082)
+13. [DLLM Agent: See Farther, Run Faster](#paper-2602.07451) - [2602.07451](https://arxiv.org/abs/2602.07451)
+14. [Convex Dominance in Deep Learning I: A Scaling Law of Loss and Learning Rate](#paper-2602.07145) - [2602.07145](https://arxiv.org/abs/2602.07145)
+15. [UI-Venus-1.5 Technical Report](#paper-2602.09082) - [2602.09082](https://arxiv.org/abs/2602.09082)
+16. [SVD-Preconditioned Gradient Descent Method for Solving Nonlinear Least Squares Problems](#paper-2602.09057) - [2602.09057](https://arxiv.org/abs/2602.09057)
 17. [Omni-Safety under Cross-Modality Conflict: Vulnerabilities, Dynamics Mechanisms and Efficient Alignment](#paper-2602.10161) - [2602.10161](https://arxiv.org/abs/2602.10161)
 18. [Towards Autonomous Mathematics Research](#paper-2602.10177) - [2602.10177](https://arxiv.org/abs/2602.10177)
 19. [Spectra: Rethinking Optimizers for LLMs Under Spectral Anisotropy](#paper-2602.11185) - [2602.11185](https://arxiv.org/abs/2602.11185)
@@ -33,13 +33,12 @@
 21. [GT-HarmBench: Benchmarking AI Safety Risks Through the Lens of Game Theory](#paper-2602.12316) - [2602.12316](https://arxiv.org/abs/2602.12316)
 22. [FireRed-Image-Edit-1.0 Technical Report](#paper-2602.13344) - [2602.13344](https://arxiv.org/abs/2602.13344)
 23. [CLOT: Closed-Loop Global Motion Tracking for Whole-Body Humanoid Teleoperation](#paper-2602.15060) - [2602.15060](https://arxiv.org/abs/2602.15060)
-24. [MARVL: Multi-Stage Guidance for Robotic Manipulation via Vision-Language Models](#paper-2602.15872) - [2602.15872](https://arxiv.org/abs/2602.15872)
-25. [DeepVision-103K: A Visually Diverse, Broad-Coverage, and Verifiable Mathematical Dataset for Multimodal Reasoning](#paper-2602.16742) - [2602.16742](https://arxiv.org/abs/2602.16742)
-26. [RDBLearn: Simple In-Context Prediction Over Relational Databases](#paper-2602.18495) - [2602.18495](https://arxiv.org/abs/2602.18495)
-27. [GeoPT: Scaling Physics Simulation via Lifted Geometric Pre-Training](#paper-2602.20399) - [2602.20399](https://arxiv.org/abs/2602.20399)
-28. [Latent Context Compilation: Distilling Long Context into Compact Portable Memory](#paper-2602.21221) - [2602.21221](https://arxiv.org/abs/2602.21221)
+24. [DeepVision-103K: A Visually Diverse, Broad-Coverage, and Verifiable Mathematical Dataset for Multimodal Reasoning](#paper-2602.16742) - [2602.16742](https://arxiv.org/abs/2602.16742)
+25. [MARVL: Multi-Stage Guidance for Robotic Manipulation via Vision-Language Models](#paper-2602.15872) - [2602.15872](https://arxiv.org/abs/2602.15872)
+26. [Latent Context Compilation: Distilling Long Context into Compact Portable Memory](#paper-2602.21221) - [2602.21221](https://arxiv.org/abs/2602.21221)
+27. [RDBLearn: Simple In-Context Prediction Over Relational Databases](#paper-2602.18495) - [2602.18495](https://arxiv.org/abs/2602.18495)
+28. [GeoPT: Scaling Physics Simulation via Lifted Geometric Pre-Training](#paper-2602.20399) - [2602.20399](https://arxiv.org/abs/2602.20399)
 29. [Make Every Draft Count: Hidden State based Speculative Decoding](#paper-2602.21224) - [2602.21224](https://arxiv.org/abs/2602.21224)
-30. [FIRE: A Comprehensive Benchmark for Financial Intelligence and Reasoning Evaluation](#paper-2602.22273) - [2602.22273](https://arxiv.org/abs/2602.22273)
 
 ---
 
@@ -249,6 +248,41 @@
 
 [↑ 返回目录](#目录)
 
+<a id="paper-2602.03922"></a>
+
+**论文ID**: 2602.03922
+
+## Online Vector Quantized Attention
+
+
+### 基本信息
+
+- **作者**: Nick Alonso, Tomas Figliolia, Beren Millidge
+- **机构**: Zyphra
+- **arXiv**: 2602.03922
+
+
+### 论文内容分析
+
+- **核心方法**: OVQ-attention（在线向量量化注意力）是一种新型序列混合层，在保持线性计算复杂度O(T)和常数内存O(N)的同时，通过稀疏内存更新机制显著增大内存容量。该方法基于高斯混合回归(GMR)理论，将键值字典的在线学习形式化为在线EM算法。采用渐进式字典增长函数N_t = tN/(t+N)控制质心数量，并使用分散最大化初始化和自适应学习率更新规则。
+- **解决的问题**: 解决大型语言模型中序列混合层在计算效率与长上下文处理能力之间难以平衡的问题。自注意力虽然长上下文表现好但有O(T²)计算和线性内存成本；线性注意力和SSMs虽高效但状态容量有限，在精确处理长上下文时性能下降；原始VQ-attention依赖预训练静态键字典，无法适应不同长度序列。
+
+
+### 效果评估（数据支撑）
+
+在64k上下文长度的ICR任务上，使用N=16k或20k字典的OVQ-attention几乎完美匹配全注意力基线性能，而原始VQ-attention和线性注意力基线在2k-4k后性能崩溃。ICL任务中，OVQ-attention使用N=4k即可匹配全注意力在128函数场景下的性能。PG19长上下文语言建模上，sw-ovq模型甚至略微超越标准全注意力基线(std-att)。短上下文基准测试中，sw-ovq(48.30)与sw-nope(48.35)、std-att(48.21)得分均在标准差范围内。内存占用方面，OVQ仅使用全注意力的10-25%。
+
+
+### 价值评估
+
+- **文章可信度**: 8/10 - ICML 2025论文，来自Zyphra研究团队，实验设计严谨，涵盖合成任务、真实语言建模和基准测试
+- **文章重要性**: 8/10 - 为高效注意力机制提供新思路，在长上下文处理方面显著优于现有线性注意力方法，具有重要学术价值
+- **端侧设备实用价值**: 7/10 - **手机**: 相关性中（长对话/文档摘要），可行性中（O(T)复杂度+常数内存，但<500M模型需量化压缩）。**移动PC**: 相关性较高（代码补全/长文档编辑），可行性高（10-25%全注意力内存，延长续航）。**机器人**: 相关性高（常数内存O(N)适合边缘），可行性中（需解决100M-300M模型规模）。**优先级**: 高。**挑战**: 模型需缩小至100M-300M、NPU/GPU算子支持、字典调整复杂度、与TFLite/CoreML兼容。
+
+---
+
+[↑ 返回目录](#目录)
+
 <a id="paper-2602.03907"></a>
 
 **论文ID**: 2602.03907
@@ -285,36 +319,36 @@
 
 [↑ 返回目录](#目录)
 
-<a id="paper-2602.03922"></a>
+<a id="paper-2602.05847"></a>
 
-**论文ID**: 2602.03922
+**论文ID**: 2602.05847
 
-## Online Vector Quantized Attention
+## OmniVideo-R1: Reinforcing Audio-visual Reasoning with Query Intention and Modality Attention
 
 
 ### 基本信息
 
-- **作者**: Nick Alonso, Tomas Figliolia, Beren Millidge
-- **机构**: Zyphra
-- **arXiv**: 2602.03922
+- **作者**: Zhangquan Chen, Jiale Tao, Ruihuang Li, Yihao Hu, Ruitao Chen, Zhantao Yang, Xinlei Yu, Haodong Jing, Manyuan Zhang, Shuai Shao, Biao Wang, Qinglin Lu, Ruqi Huang
+- **机构**: 清华大学、新加坡国立大学、香港中文大学、湖南大学、西安交通大学、腾讯（Tencent HY）
+- **arXiv**: 2602.05847
 
 
 ### 论文内容分析
 
-- **核心方法**: OVQ-attention（在线向量量化注意力）是一种新型序列混合层，在保持线性计算复杂度O(T)和常数内存O(N)的同时，通过稀疏内存更新机制显著增大内存容量。该方法基于高斯混合回归(GMR)理论，将键值字典的在线学习形式化为在线EM算法。采用渐进式字典增长函数N_t = tN/(t+N)控制质心数量，并使用分散最大化初始化和自适应学习率更新规则。
-- **解决的问题**: 解决大型语言模型中序列混合层在计算效率与长上下文处理能力之间难以平衡的问题。自注意力虽然长上下文表现好但有O(T²)计算和线性内存成本；线性注意力和SSMs虽高效但状态容量有限，在精确处理长上下文时性能下降；原始VQ-attention依赖预训练静态键字典，无法适应不同长度序列。
+- **核心方法**: OmniVideo-R1是一个两阶段强化学习框架，基于Group Sequence Policy Optimization (GSPO)算法。第一阶段Query-intensive Grounding (QI)通过自监督学习让模型在生成回答前显式定位与查询相关的音视频片段，建立"用全模态线索思考"的行为模式。第二阶段Modality-attentive Fusion (MA)通过对比学习策略，强制模型从完整音视频输入中获得比任一单模态输入更高的置信度，从而发现视听事件间的协同关系。
+- **解决的问题**: 解决现有全模态视频模型中的"模态协同悖论"——引入音频模态后，模型非但未增强视觉推理能力，反而出现性能下降。现有预训练存在固有模态偏见，后训练方法未显式训练跨模态证据追踪与融合行为，导致模型依赖单模态捷径而非真正的多模态协同推理。
 
 
 ### 效果评估（数据支撑）
 
-在64k上下文长度的ICR任务上，使用N=16k或20k字典的OVQ-attention几乎完美匹配全注意力基线性能，而原始VQ-attention和线性注意力基线在2k-4k后性能崩溃。ICL任务中，OVQ-attention使用N=4k即可匹配全注意力在128函数场景下的性能。PG19长上下文语言建模上，sw-ovq模型甚至略微超越标准全注意力基线(std-att)。短上下文基准测试中，sw-ovq(48.30)与sw-nope(48.35)、std-att(48.21)得分均在标准差范围内。内存占用方面，OVQ仅使用全注意力的10-25%。
+在四个权威音频-视觉问答基准上，OmniVideo-R1达到Daily-Omni 82.8（超越Gemini-3-Pro的81.1）、WorldSense 65.8（较基线Qwen3-Omni提升11.8%）、IntentBench 74.2（较Gemini-3-Pro提升3.8%）、OmniVideoBench 44.8（较Qwen3-Omni-30B-A3B提升7.8个百分点）。在纯视觉理解基准上，Video-MME 73.6（较基线70.5提升4.4%）、LVBench 51.9（较基线50.2提升3.4%），MLVU 74.1与基线基本持平，证明引入音频训练未导致视觉能力退化。消融实验表明QI和MA两阶段缺一不可，移除任一模块均导致显著性能下降。
 
 
 ### 价值评估
 
-- **文章可信度**: 8/10 - ICML 2025论文，来自Zyphra研究团队，实验设计严谨，涵盖合成任务、真实语言建模和基准测试
-- **文章重要性**: 8/10 - 为高效注意力机制提供新思路，在长上下文处理方面显著优于现有线性注意力方法，具有重要学术价值
-- **端侧设备实用价值**: 7/10 - **手机**: 相关性中（长对话/文档摘要），可行性中（O(T)复杂度+常数内存，但<500M模型需量化压缩）。**移动PC**: 相关性较高（代码补全/长文档编辑），可行性高（10-25%全注意力内存，延长续航）。**机器人**: 相关性高（常数内存O(N)适合边缘），可行性中（需解决100M-300M模型规模）。**优先级**: 高。**挑战**: 模型需缩小至100M-300M、NPU/GPU算子支持、字典调整复杂度、与TFLite/CoreML兼容。
+- **文章可信度**: 8/10 - 实验设计严谨，包含完整的消融实验、与多个基线（QA SFT、CoT SFT、Vanilla RL）的对比、以及对训练策略的详尽分析。数据准备流程三阶段精炼（质量评估、启发式过滤、类别平衡），奖励函数设计合理且有理论依据。
+- **文章重要性**: 9/10 - 首次提出针对全模态模型的RL后训练范式，直面模态协同悖论这一核心问题。两阶段方法（QI+MA）思路清晰，具有较强的创新性。为多模态推理领域提供了新范式，学术价值高。
+- **端侧设备实用价值**: 8/10 - **手机**: 相关性中（短视频理解/内容审核/AR眼镜感知），可行性中（需3B轻量化，端侧算力可支持）。**移动PC**: 相关性高（视频会议摘要/离线音视频分析/私人助手），可行性高（7B以下可运行）。**机器人**: 相关性高（实时环境感知与意图推理），可行性高（边缘部署契合边思考边行动）。**优先级**: 高。**挑战**: 模型蒸馏至7B以下；两阶段推理延迟优化；轻量级音频编码器
 
 ---
 
@@ -397,41 +431,6 @@ DeepRead在四个基准测试上取得了79.5%的总体准确率（使用expand�
 
 [↑ 返回目录](#目录)
 
-<a id="paper-2602.05847"></a>
-
-**论文ID**: 2602.05847
-
-## OmniVideo-R1: Reinforcing Audio-visual Reasoning with Query Intention and Modality Attention
-
-
-### 基本信息
-
-- **作者**: Zhangquan Chen, Jiale Tao, Ruihuang Li, Yihao Hu, Ruitao Chen, Zhantao Yang, Xinlei Yu, Haodong Jing, Manyuan Zhang, Shuai Shao, Biao Wang, Qinglin Lu, Ruqi Huang
-- **机构**: 清华大学、新加坡国立大学、香港中文大学、湖南大学、西安交通大学、腾讯（Tencent HY）
-- **arXiv**: 2602.05847
-
-
-### 论文内容分析
-
-- **核心方法**: OmniVideo-R1是一个两阶段强化学习框架，基于Group Sequence Policy Optimization (GSPO)算法。第一阶段Query-intensive Grounding (QI)通过自监督学习让模型在生成回答前显式定位与查询相关的音视频片段，建立"用全模态线索思考"的行为模式。第二阶段Modality-attentive Fusion (MA)通过对比学习策略，强制模型从完整音视频输入中获得比任一单模态输入更高的置信度，从而发现视听事件间的协同关系。
-- **解决的问题**: 解决现有全模态视频模型中的"模态协同悖论"——引入音频模态后，模型非但未增强视觉推理能力，反而出现性能下降。现有预训练存在固有模态偏见，后训练方法未显式训练跨模态证据追踪与融合行为，导致模型依赖单模态捷径而非真正的多模态协同推理。
-
-
-### 效果评估（数据支撑）
-
-在四个权威音频-视觉问答基准上，OmniVideo-R1达到Daily-Omni 82.8（超越Gemini-3-Pro的81.1）、WorldSense 65.8（较基线Qwen3-Omni提升11.8%）、IntentBench 74.2（较Gemini-3-Pro提升3.8%）、OmniVideoBench 44.8（较Qwen3-Omni-30B-A3B提升7.8个百分点）。在纯视觉理解基准上，Video-MME 73.6（较基线70.5提升4.4%）、LVBench 51.9（较基线50.2提升3.4%），MLVU 74.1与基线基本持平，证明引入音频训练未导致视觉能力退化。消融实验表明QI和MA两阶段缺一不可，移除任一模块均导致显著性能下降。
-
-
-### 价值评估
-
-- **文章可信度**: 8/10 - 实验设计严谨，包含完整的消融实验、与多个基线（QA SFT、CoT SFT、Vanilla RL）的对比、以及对训练策略的详尽分析。数据准备流程三阶段精炼（质量评估、启发式过滤、类别平衡），奖励函数设计合理且有理论依据。
-- **文章重要性**: 9/10 - 首次提出针对全模态模型的RL后训练范式，直面模态协同悖论这一核心问题。两阶段方法（QI+MA）思路清晰，具有较强的创新性。为多模态推理领域提供了新范式，学术价值高。
-- **端侧设备实用价值**: 8/10 - **手机**: 相关性中（短视频理解/内容审核/AR眼镜感知），可行性中（需3B轻量化，端侧算力可支持）。**移动PC**: 相关性高（视频会议摘要/离线音视频分析/私人助手），可行性高（7B以下可运行）。**机器人**: 相关性高（实时环境感知与意图推理），可行性高（边缘部署契合边思考边行动）。**优先级**: 高。**挑战**: 模型蒸馏至7B以下；两阶段推理延迟优化；轻量级音频编码器
-
----
-
-[↑ 返回目录](#目录)
-
 <a id="paper-2602.06052"></a>
 
 **论文ID**: 2602.06052
@@ -462,6 +461,40 @@ DeepRead在四个基准测试上取得了79.5%的总体准确率（使用expand�
 - **文章可信度**: 9/10 - 综述论文由大量作者合作完成，涵盖218篇相关工作，引用广泛，学术严谨性高
 - **文章重要性**: 9/10 - 记忆机制是Foundation Agent的核心组件，该综述为领域提供了系统的分类框架，对后续研究具有重要指导意义
 - **端侧设备实用价值**: 8/10 - **手机**: 相关性高（个人助理、消息摘要），可行性中等（受限于内存功耗）。**移动PC**: 相关性高（开发者助手），可行性较高（算力充足）。**机器人**: 相关性高（服务机器人），可行性中等（边缘算力有限）。**优先级**: 高。**挑战**: 记忆压缩与检索效率
+
+---
+
+[↑ 返回目录](#目录)
+
+<a id="paper-2602.07451"></a>
+
+# DLLM Agent: See Farther, Run Faster
+
+**论文ID**: 2602.07451
+
+## 基本信息
+
+- **作者**: Huiling Zhen, Weizhe Lin, Renxi Liu, Kai Han, Yiming Li, Yuchuan Tian, Hanting Chen, Xiaoguang Li, Xiaosong Li, Chen Chen, Xianzhi Yu, Mingxuan Yuan, Youliang Yan, Peifeng Qin, Jun Wang, Yu Wang, Dacheng Tao, Yunhe Wang
+- **机构**: 华为技术有限公司，UCL，清华大学，NTU，北京大学
+- **arXiv**: 2602.07451
+
+
+### 论文内容分析
+
+- **核心方法**: 在相同的DeepDiver多智能体工作流中实例化AR和DLLM两种骨干网络，确保框架、工具集、训练数据完全一致。对DLLM采用块级去噪目标结合辅助AR损失(λ=0.5)进行微调，提出Context-clean Corruption(仅对当前动作片段加噪)和Span-aware Attention Alignment(消除不存在的双向注意力路径)解决多轮训练-推理不匹配问题。
+- **解决的问题**: 研究当生成范式从自回归(AR)切换到扩散(DLLM)时，代理的规划效率和工具使用行为是否会发生系统性变化，以及这些差异能否转化为端到端效率增益。
+
+
+### 效果评估（数据支撑）
+
+在BrowseComp-zh基准(110题子集)上的实验结果显示，两者准确率持平(15.5%)，但DLLM Agent平均工具调用降至6.7次(AR为7.5次)，交互轮次降至13.0(AR为14.8)，端到端延迟降低逾30%。在特定约束满足任务中实现8倍加速(140.95s vs 1152.68s)。消融实验表明Context-clean Corruption和Span-aware Attention Alignment两项技术均对性能有重要贡献，去除后准确率降至14.5%。但DLLM Agent的无效动作率为6.4%，高于AR的1.9%，表明结构化工具调用可靠性仍是扩散骨干的薄弱点。
+
+
+### 价值评估
+
+- **文章可信度**: 8/10 - 实验设计严谨，控制变量充分，有详细的消融实验和案例研究，验证了掩码对齐技术的必要性
+- **文章重要性**: 9/10 - 首次系统研究扩散范式对多步代理行为的影响，揭示了DLLM在动作片段级别的全局规划能力，有重要学术价值
+- **端侧设备实用价值**: 8/10 - **手机**: 中（语音助手/翻译有吸引力），低（算力难以支撑）。**移动PC**: 高（代码助手/文档处理），高（轻量DLLM可部署）。**机器人**: 高（工业导航/任务分解），高（8倍加速价值大）。**优先级**: 中。**挑战**: 算力需求高、工具调用可靠性低。
 
 ---
 
@@ -502,71 +535,6 @@ DeepRead在四个基准测试上取得了79.5%的总体准确率（使用expand�
 
 [↑ 返回目录](#目录)
 
-<a id="paper-2602.07451"></a>
-
-# DLLM Agent: See Farther, Run Faster
-
-**论文ID**: 2602.07451
-
-## 基本信息
-
-- **作者**: Huiling Zhen, Weizhe Lin, Renxi Liu, Kai Han, Yiming Li, Yuchuan Tian, Hanting Chen, Xiaoguang Li, Xiaosong Li, Chen Chen, Xianzhi Yu, Mingxuan Yuan, Youliang Yan, Peifeng Qin, Jun Wang, Yu Wang, Dacheng Tao, Yunhe Wang
-- **机构**: 华为技术有限公司，UCL，清华大学，NTU，北京大学
-- **arXiv**: 2602.07451
-
-
-### 论文内容分析
-
-- **核心方法**: 在相同的DeepDiver多智能体工作流中实例化AR和DLLM两种骨干网络，确保框架、工具集、训练数据完全一致。对DLLM采用块级去噪目标结合辅助AR损失(λ=0.5)进行微调，提出Context-clean Corruption(仅对当前动作片段加噪)和Span-aware Attention Alignment(消除不存在的双向注意力路径)解决多轮训练-推理不匹配问题。
-- **解决的问题**: 研究当生成范式从自回归(AR)切换到扩散(DLLM)时，代理的规划效率和工具使用行为是否会发生系统性变化，以及这些差异能否转化为端到端效率增益。
-
-
-### 效果评估（数据支撑）
-
-在BrowseComp-zh基准(110题子集)上的实验结果显示，两者准确率持平(15.5%)，但DLLM Agent平均工具调用降至6.7次(AR为7.5次)，交互轮次降至13.0(AR为14.8)，端到端延迟降低逾30%。在特定约束满足任务中实现8倍加速(140.95s vs 1152.68s)。消融实验表明Context-clean Corruption和Span-aware Attention Alignment两项技术均对性能有重要贡献，去除后准确率降至14.5%。但DLLM Agent的无效动作率为6.4%，高于AR的1.9%，表明结构化工具调用可靠性仍是扩散骨干的薄弱点。
-
-
-### 价值评估
-
-- **文章可信度**: 8/10 - 实验设计严谨，控制变量充分，有详细的消融实验和案例研究，验证了掩码对齐技术的必要性
-- **文章重要性**: 9/10 - 首次系统研究扩散范式对多步代理行为的影响，揭示了DLLM在动作片段级别的全局规划能力，有重要学术价值
-- **端侧设备实用价值**: 8/10 - **手机**: 中（语音助手/翻译有吸引力），低（算力难以支撑）。**移动PC**: 高（代码助手/文档处理），高（轻量DLLM可部署）。**机器人**: 高（工业导航/任务分解），高（8倍加速价值大）。**优先级**: 中。**挑战**: 算力需求高、工具调用可靠性低。
-
----
-
-[↑ 返回目录](#目录)
-
-<a id="paper-2602.09057"></a>
-
-**论文ID**: 2602.09057
-
-# SVD-Preconditioned Gradient Descent Method for Solving Nonlinear Least Squares Problems
-
-### 基本信息
-
-- **作者**: Zhipeng Chang, Wenrui Hao, Nian Liu
-- **机构**: 宾夕法尼亚州立大学数学系
-- **arXiv**: 2602.09057
-
-### 论文内容分析
-
-- **核心方法**: 论文提出基于奇异值分解（SVD）的预条件梯度下降方法（SPGD），通过利用雅可比矩阵的SVD分解 $J_F(\theta) = U\Sigma V^\top$ 构造预条件子 $A = V\Sigma^{-1/2}U^\top$，将标准梯度流转化为"类物理流" $d\theta/dt = -VU^\top F(\theta)$。该方法将收敛因子从标准GD的 $1-(\sigma_{\min}/\sigma_{\max})^2$ 改善为 $1-\sigma_{\min}/(2\sigma_{\max})$。进一步将预条件子与Adam优化器的一阶/二阶矩估计机制集成，通过Lanczos迭代实现大规模神经网络的高效计算。
-- **解决的问题**: 解决非线性最小二乘问题中标准梯度下降在病态雅可比矩阵下的缓慢收敛问题，以及二阶方法（牛顿法、拟牛顿法）的高计算成本与非凸敏感性问题。
-
-### 效果评估（数据支撑）
-
-论文在函数逼近、PDE求解和CIFAR-10图像分类三个任务上验证了方法有效性。函数逼近实验中，SPGD达到预设误差阈值（如10⁻⁴或10⁻⁵）所需的epoch比Adam减少约一个数量级，最终测试损失中位数比Adam低1-2个数量级（例如，当n=9时，Adam最终损失4.73×10⁻¹，而SPGD为2.52×10⁻⁷）。PDE求解实验中，随着空间维度增加，SPGD的优势更加显著，在d=8时SPGD的相对L²误差（中位数3.04×10⁻³）比Adam（中位数1.12×10⁻¹）低约两个数量级。CIFAR-10分类实验中，SPGD在SimpleCNN-8k、LeNet-62k和ResNet20-272k三种架构上均实现更快收敛和更高最终测试准确率。
-
-### 价值评估
-
-- **文章可信度**: 9/10 - 理论分析严谨（局部线性收敛+全局收敛证明），实验设计规范（10次独立运行、中位数+四分位距统计），数据充分（三个不同任务）
-- **文章重要性**: 8/10 - 为优化领域提供新的预条件化思路，连接了物理流与梯度流两种视角，对科学计算和深度学习优化均有参考价值
-- **端侧设备实用价值**: 7/10 - **手机**: 中相关（轻量模型训练加速），低可行（Lanczos开销大，GPU弱）。**移动PC**: 高相关（科学计算/边缘AI微调），高可行（算力充足）。**机器人**: 高相关（边缘训练加速），中高可行（嵌入式优化后）。**优先级**: 中。**挑战**: Lanczos计算开销，嵌入式优化难度
-
----
-
-[↑ 返回目录](#目录)
-
 <a id="paper-2602.09082"></a>
 
 **论文ID**: 2602.09082
@@ -598,6 +566,37 @@ UI-Venus-1.5在多个基准测试上取得领先性能：在ScreenSpot-Pro上达
 - **文章可信度**: 8/10 - 来自蚂蚁集团技术团队，实验在多个公开基准上进行对比，包括ScreenSpot-Pro、VenusBench-GD等，消融实验充分
 - **文章重要性**: 9/10 - GUI Agent是当前热门研究方向，该工作在多个基准上取得SOTA性能，提出了一套完整的训练范式(Mid-Training + Offline-RL + Online-RL + Model Merge)，对领域有重要参考价值
 - **端侧设备实用价值**: 9/10 - **手机**: 高相关性（实际中文App验证），高可行性（ADB部署框架，2B中端可运行，8B需旗舰机）。**移动PC**: 中相关性（桌面自动化），中可行性（需8B-30B，高功耗）。**机器人**: 中相关性（交互界面控制），低可行性（需模型压缩优化）。**优先级**: 高。**挑战**: 模型大小与性能权衡、端侧推理延迟功耗、多设备适配、离线RL训练资源。
+
+---
+
+[↑ 返回目录](#目录)
+
+<a id="paper-2602.09057"></a>
+
+**论文ID**: 2602.09057
+
+# SVD-Preconditioned Gradient Descent Method for Solving Nonlinear Least Squares Problems
+
+### 基本信息
+
+- **作者**: Zhipeng Chang, Wenrui Hao, Nian Liu
+- **机构**: 宾夕法尼亚州立大学数学系
+- **arXiv**: 2602.09057
+
+### 论文内容分析
+
+- **核心方法**: 论文提出基于奇异值分解（SVD）的预条件梯度下降方法（SPGD），通过利用雅可比矩阵的SVD分解 $J_F(\theta) = U\Sigma V^\top$ 构造预条件子 $A = V\Sigma^{-1/2}U^\top$，将标准梯度流转化为"类物理流" $d\theta/dt = -VU^\top F(\theta)$。该方法将收敛因子从标准GD的 $1-(\sigma_{\min}/\sigma_{\max})^2$ 改善为 $1-\sigma_{\min}/(2\sigma_{\max})$。进一步将预条件子与Adam优化器的一阶/二阶矩估计机制集成，通过Lanczos迭代实现大规模神经网络的高效计算。
+- **解决的问题**: 解决非线性最小二乘问题中标准梯度下降在病态雅可比矩阵下的缓慢收敛问题，以及二阶方法（牛顿法、拟牛顿法）的高计算成本与非凸敏感性问题。
+
+### 效果评估（数据支撑）
+
+论文在函数逼近、PDE求解和CIFAR-10图像分类三个任务上验证了方法有效性。函数逼近实验中，SPGD达到预设误差阈值（如10⁻⁴或10⁻⁵）所需的epoch比Adam减少约一个数量级，最终测试损失中位数比Adam低1-2个数量级（例如，当n=9时，Adam最终损失4.73×10⁻¹，而SPGD为2.52×10⁻⁷）。PDE求解实验中，随着空间维度增加，SPGD的优势更加显著，在d=8时SPGD的相对L²误差（中位数3.04×10⁻³）比Adam（中位数1.12×10⁻¹）低约两个数量级。CIFAR-10分类实验中，SPGD在SimpleCNN-8k、LeNet-62k和ResNet20-272k三种架构上均实现更快收敛和更高最终测试准确率。
+
+### 价值评估
+
+- **文章可信度**: 9/10 - 理论分析严谨（局部线性收敛+全局收敛证明），实验设计规范（10次独立运行、中位数+四分位距统计），数据充分（三个不同任务）
+- **文章重要性**: 8/10 - 为优化领域提供新的预条件化思路，连接了物理流与梯度流两种视角，对科学计算和深度学习优化均有参考价值
+- **端侧设备实用价值**: 7/10 - **手机**: 中相关（轻量模型训练加速），低可行（Lanczos开销大，GPU弱）。**移动PC**: 高相关（科学计算/边缘AI微调），高可行（算力充足）。**机器人**: 高相关（边缘训练加速），中高可行（嵌入式优化后）。**优先级**: 中。**挑战**: Lanczos计算开销，嵌入式优化难度
 
 ---
 
@@ -851,6 +850,42 @@ UI-Venus-1.5在多个基准测试上取得领先性能：在ScreenSpot-Pro上达
 
 [↑ 返回目录](#目录)
 
+<a id="paper-2602.16742"></a>
+
+**论文ID**: 2602.16742
+
+## DeepVision-103K: A Visually Diverse, Broad-Coverage, and Verifiable Mathematical Dataset for Multimodal Reasoning
+
+
+### 基本信息
+
+- **作者**: Haoxiang Sun, Lizhen Xu, Bing Zhao, Wotao Yin, Wei Wang, Boyu Yang, Rui Wang, Hu Wei
+- **机构**: 阿里巴巴, 上海交通大学
+- **arXiv**: 2602.16742
+
+
+### 论文内容分析
+
+- **核心方法**: 论文构建了DeepVision-103K数据集，包含77K K12数学问题和26K视觉逻辑问题（迷宫、棋类、俄罗斯方块），提出三阶段自动数据整理流程：1) 有效性过滤（移除证明题、描述题、多答案题）；2) 难度校准（基于模型rollout通过率筛选Pass Rate在[1/8, 7/8]区间的样本）；3) 查询正确性验证（使用Gemini-3-Flash验证输入完整性、图文一致性及答案正确性）。覆盖6大视觉类别：平面几何、立体几何、解析图、数据图表、示意图、真实世界物品。采用GSPO算法进行RLVR训练。
+
+- **解决的问题**: 解决现有RLVR训练数据的三大局限性：1) 合成数据集（如GeoGebra构建）缺乏真实世界数学场景；2) 人工标注K12数据依赖专家标注，难以规模化；3) 重组现有数据集造成分布重叠且缺乏创新。目标是构建大规模、视觉多样、可自动验证的多模态数学数据集以提升LMMs的视觉反思与推理能力。
+
+
+### 效果评估（数据支撑）
+
+在MiMo-VL-7B和Qwen3-VL-8B基础模型上使用GSPO算法训练后，Qwen3-VL-8B-DeepVision在WeMath达到85.11%（SOTA），LogicVista达64.73%；MiMo-VL-7B-DeepVision在LogicVista达65.62%（SOTA），MMMU_val达71.00%。相比Instruct/SFT基线提升2.91%至8.56%，并在MMMU、M3CoT等通用多模态任务上显著超越官方思考变体。消融实验表明：1) 视觉逻辑数据不仅直接提升空间推理，还对数学推理有正向迁移；2) 查询正确性验证至关重要，使用未验证数据训练性能下降至67.93%（数学平均）vs 70.10%。
+
+
+### 价值评估
+
+- **文章可信度**: 8/10 - 实验设计严谨，使用多个基线模型和基准数据集进行对比，消融实验充分，数据整理流程详细描述，但依赖外部强模型（Gemini）进行验证可能引入偏见
+- **文章重要性**: 9/10 - 首次系统性地构建大规模多模态数学RLVR数据集，三阶段自动整理流程具有创新性，提出的视觉多样性+广泛覆盖+可验证性框架对领域有重要贡献
+- **端侧设备实用价值**: 9/10 - **手机**: 相关性中（教育AI助手），可行性低（需模型小型化）。**移动PC**: 相关性高（本地AI辅导），可行性中（算力受限）。**机器人**: 相关性中（空间推理/导航），可行性低（算力存储受限）。**优先级**: 高（移动PC>手机>机器人）。**挑战**: 模型压缩、视觉算力要求高、端侧存储有限
+
+---
+
+[↑ 返回目录](#目录)
+
 <a id="paper-2602.15872"></a>
 
 **论文ID**: 2602.15872
@@ -886,37 +921,43 @@ UI-Venus-1.5在多个基准测试上取得领先性能：在ScreenSpot-Pro上达
 
 [↑ 返回目录](#目录)
 
-<a id="paper-2602.16742"></a>
+<a id="paper-2602.21221"></a>
 
-**论文ID**: 2602.16742
+---
+**论文ID**: 2602.21221
 
-## DeepVision-103K: A Visually Diverse, Broad-Coverage, and Verifiable Mathematical Dataset for Multimodal Reasoning
+## Latent Context Compilation: Distilling Long Context into Compact Portable Memory
 
+---
 
 ### 基本信息
 
-- **作者**: Haoxiang Sun, Lizhen Xu, Bing Zhao, Wotao Yin, Wei Wang, Boyu Yang, Rui Wang, Hu Wei
-- **机构**: 阿里巴巴, 上海交通大学
-- **arXiv**: 2602.16742
+- **作者**: Zeju Li, Yizhou Zhou, Qiang Xu
+- **机构**: 香港中文大学, 字节跳动
+- **arXiv**: 2602.21221
 
+---
 
 ### 论文内容分析
 
-- **核心方法**: 论文构建了DeepVision-103K数据集，包含77K K12数学问题和26K视觉逻辑问题（迷宫、棋类、俄罗斯方块），提出三阶段自动数据整理流程：1) 有效性过滤（移除证明题、描述题、多答案题）；2) 难度校准（基于模型rollout通过率筛选Pass Rate在[1/8, 7/8]区间的样本）；3) 查询正确性验证（使用Gemini-3-Flash验证输入完整性、图文一致性及答案正确性）。覆盖6大视觉类别：平面几何、立体几何、解析图、数据图表、示意图、真实世界物品。采用GSPO算法进行RLVR训练。
+- **核心方法**: 提出Latent Context Compilation框架，利用一次性LoRA模块作为"编译器"将长上下文蒸馏为紧凑的buffer tokens。核心组件包括：(1) 压缩瓶颈架构，通过严格因果掩码强制所有信息流经buffer tokens；(2) 梯度隔离策略——LoRA仅在压缩阶段激活，推理时丢弃；(3) 自对齐优化策略，结合上下文重建任务与使用上下文无关查询的流形正则化，无需合成QA对即可实现高保真压缩。
+- **解决的问题**: 长上下文LLM部署中的"上下文瓶颈"问题——注意力计算的二次方成本与KV缓存的巨大内存占用使长上下文处理在经济上不可持续。现有方法（摊销压缩、测试时训练）存在根本性权衡：泛化性差距 vs. 状态化服务瓶颈。
 
-- **解决的问题**: 解决现有RLVR训练数据的三大局限性：1) 合成数据集（如GeoGebra构建）缺乏真实世界数学场景；2) 人工标注K12数据依赖专家标注，难以规模化；3) 重组现有数据集造成分布重叠且缺乏创新。目标是构建大规模、视觉多样、可自动验证的多模态数学数据集以提升LMMs的视觉反思与推理能力。
-
+---
 
 ### 效果评估（数据支撑）
 
-在MiMo-VL-7B和Qwen3-VL-8B基础模型上使用GSPO算法训练后，Qwen3-VL-8B-DeepVision在WeMath达到85.11%（SOTA），LogicVista达64.73%；MiMo-VL-7B-DeepVision在LogicVista达65.62%（SOTA），MMMU_val达71.00%。相比Instruct/SFT基线提升2.91%至8.56%，并在MMMU、M3CoT等通用多模态任务上显著超越官方思考变体。消融实验表明：1) 视觉逻辑数据不仅直接提升空间推理，还对数学推理有正向迁移；2) 查询正确性验证至关重要，使用未验证数据训练性能下降至67.93%（数学平均）vs 70.10%。
+在16×压缩比（仅保留6.25% tokens）下，Latent Context Compilation显著优于保留20% tokens的提取式基线（LLMLingua-2）。在SQuAD、CoQA、BookSum、XSum等上下文相关任务上，性能逼近或超越全上下文上限。值得注意的是，在CoQA上得分3.29超越全上下文上限2.89。在通用推理基准（GPQA、Alpaca）上，性能与基础模型持平（GPQA: 0.80 vs 0.89），避免TTT方法的灾难性遗忘问题。消融实验验证了梯度隔离的关键作用：推理时保留LoRA导致CoQA性能下降（2.46 vs 3.29）。
 
+---
 
 ### 价值评估
 
-- **文章可信度**: 8/10 - 实验设计严谨，使用多个基线模型和基准数据集进行对比，消融实验充分，数据整理流程详细描述，但依赖外部强模型（Gemini）进行验证可能引入偏见
-- **文章重要性**: 9/10 - 首次系统性地构建大规模多模态数学RLVR数据集，三阶段自动整理流程具有创新性，提出的视觉多样性+广泛覆盖+可验证性框架对领域有重要贡献
-- **端侧设备实用价值**: 9/10 - **手机**: 相关性中（教育AI助手），可行性低（需模型小型化）。**移动PC**: 相关性高（本地AI辅导），可行性中（算力受限）。**机器人**: 相关性中（空间推理/导航），可行性低（算力存储受限）。**优先级**: 高（移动PC>手机>机器人）。**挑战**: 模型压缩、视觉算力要求高、端侧存储有限
+- **文章可信度**: 8/10 - 方法论创新性强，包含系统性消融实验（梯度隔离、数据策略、压缩比敏感性），理论形式化清晰，实验覆盖广泛
+- **文章重要性**: 9/10 - 解决长上下文LLM部署的关键瓶颈问题，具有广泛的学术和工业影响力
+- **端侧设备实用价值**: 9/10 - **手机**: 高相关性（长对话/文档压缩为紧凑buffer，实现长期记忆存储，减少云端依赖），可行性中（4GB上下文压至256MB，适合KV缓存受限场景，但受功耗和内存限制）。**移动PC**: 中高相关性（轻量级LoRA编译器本地部署，隐私前提下实现本地知识库问答），可行性高（算力相对充裕且持续供电，最先落地）。**机器人**: 高相关性（压缩上下文减少注意力计算量，适合实时交互），可行性中（内存和计算瓶颈，需实时性验证）。**优先级**: 高（移动PC > 手机 > 机器人）。**挑战**: KV缓存仍需加载内存、一次性编译需针对场景重新训练LoRA、端侧需优化LoRA加载开销。
+
+---
 
 ---
 
@@ -995,48 +1036,6 @@ GeoPT在5个工业级基准上验证：DrivAerML（汽车空气动力学）、NA
 
 [↑ 返回目录](#目录)
 
-<a id="paper-2602.21221"></a>
-
----
-**论文ID**: 2602.21221
-
-## Latent Context Compilation: Distilling Long Context into Compact Portable Memory
-
----
-
-### 基本信息
-
-- **作者**: Zeju Li, Yizhou Zhou, Qiang Xu
-- **机构**: 香港中文大学, 字节跳动
-- **arXiv**: 2602.21221
-
----
-
-### 论文内容分析
-
-- **核心方法**: 提出Latent Context Compilation框架，利用一次性LoRA模块作为"编译器"将长上下文蒸馏为紧凑的buffer tokens。核心组件包括：(1) 压缩瓶颈架构，通过严格因果掩码强制所有信息流经buffer tokens；(2) 梯度隔离策略——LoRA仅在压缩阶段激活，推理时丢弃；(3) 自对齐优化策略，结合上下文重建任务与使用上下文无关查询的流形正则化，无需合成QA对即可实现高保真压缩。
-- **解决的问题**: 长上下文LLM部署中的"上下文瓶颈"问题——注意力计算的二次方成本与KV缓存的巨大内存占用使长上下文处理在经济上不可持续。现有方法（摊销压缩、测试时训练）存在根本性权衡：泛化性差距 vs. 状态化服务瓶颈。
-
----
-
-### 效果评估（数据支撑）
-
-在16×压缩比（仅保留6.25% tokens）下，Latent Context Compilation显著优于保留20% tokens的提取式基线（LLMLingua-2）。在SQuAD、CoQA、BookSum、XSum等上下文相关任务上，性能逼近或超越全上下文上限。值得注意的是，在CoQA上得分3.29超越全上下文上限2.89。在通用推理基准（GPQA、Alpaca）上，性能与基础模型持平（GPQA: 0.80 vs 0.89），避免TTT方法的灾难性遗忘问题。消融实验验证了梯度隔离的关键作用：推理时保留LoRA导致CoQA性能下降（2.46 vs 3.29）。
-
----
-
-### 价值评估
-
-- **文章可信度**: 8/10 - 方法论创新性强，包含系统性消融实验（梯度隔离、数据策略、压缩比敏感性），理论形式化清晰，实验覆盖广泛
-- **文章重要性**: 9/10 - 解决长上下文LLM部署的关键瓶颈问题，具有广泛的学术和工业影响力
-- **端侧设备实用价值**: 9/10 - **手机**: 高相关性（长对话/文档压缩为紧凑buffer，实现长期记忆存储，减少云端依赖），可行性中（4GB上下文压至256MB，适合KV缓存受限场景，但受功耗和内存限制）。**移动PC**: 中高相关性（轻量级LoRA编译器本地部署，隐私前提下实现本地知识库问答），可行性高（算力相对充裕且持续供电，最先落地）。**机器人**: 高相关性（压缩上下文减少注意力计算量，适合实时交互），可行性中（内存和计算瓶颈，需实时性验证）。**优先级**: 高（移动PC > 手机 > 机器人）。**挑战**: KV缓存仍需加载内存、一次性编译需针对场景重新训练LoRA、端侧需优化LoRA加载开销。
-
----
-
----
-
-[↑ 返回目录](#目录)
-
 <a id="paper-2602.21224"></a>
 
 **论文ID**: 2602.21224
@@ -1068,42 +1067,6 @@ GeoPT在5个工业级基准上验证：DrivAerML（汽车空气动力学）、NA
 - **文章可信度**: 8/10 - 实验在主流LLM（LLaMA-2-7B, Vicuna-7B）上使用标准基准测试，对比SPS、N-gram、EAGLE等基线方法，在真实硬件（H800、A800）上进行系统评估，数据充分可信
 - **文章重要性**: 9/10 - 首次实现被拒绝草稿的隐藏状态级重用，为LLM推理加速提供新范式，核心思想可推广至其他投机解码变体，学术影响力显著
 - **端侧设备实用价值**: 7/10 - **手机**: 中等（7B模型14GB超出手机内存），低（需4-bit量化至3.5GB或用650M小模型）。**移动PC**: 较高（16-32GB内存可运行量化模型），高（草稿模型前置降低首token延迟）。**机器人**: 高（Jetson/昇腾8-16GB适用），高（减少GPU计算，适合实时对话）。**优先级**: 中。**挑战**: 7B模型14GB+内存需求高，草稿模型增加内存开销，推理框架修改复杂
-
----
-
-[↑ 返回目录](#目录)
-
-<a id="paper-2602.22273"></a>
-
-{# 结构化分析模板 - 单论文深度分析 #}
-**论文ID**: 2602.22273
-
-## FIRE: A Comprehensive Benchmark for Financial Intelligence and Reasoning Evaluation
-
-
-### 基本信息
-
-- **作者**: Xiyuan Zhang, Huihang Wu, Jiayu Guo, Zhenlin Zhang, Yiwei Zhang, Liangyu Huo, Xiaoxiao Ma, Jianshi Wan, Xuewei Jiao, Yi Jing, Jian Xie
-- **机构**: 百度；清华大学五道口金融学院；中国人民大学财政金融学院
-- **arXiv**: 2602.22273
-
-
-### 论文内容分析
-
-- **核心方法**: 论文提出FIRE基准，包含两个互补评估维度：(1) 理论知识评估：收集14,000+道来自14项国际/国内金融资格认证(CFA、CPA、FRM、CFP等)的考试题目；(2) 实践技能评估：构建3,000道基于真实金融业务场景的问题，采用矩阵式框架(8大金融领域×4大能力维度)。针对开放式问题，设计了问题级评分标准(rubrics)并训练专用评分模型(基于Qwen3-32B，采用Reverse CoT和RLVR训练)。
-- **解决的问题**: 现有金融LLM基准存在三大局限：(1) 分类粒度不足，任务重叠且关键领域覆盖不全；(2) 理论与实践脱节——过度关注术语理解而非端到端业务问题解决能力；(3) 开放式任务评估不稳定，LLM-as-a-judge方法对回答长度和提示词敏感导致评分不一致。
-
-
-### 效果评估（数据支撑）
-
-在金融资格考试评估中，XuanYuan 4.0取得开源模型最高分92.15%，与Gemini 3.0 Pro(91.43%)相当。在3,000道真实业务场景题中，GPT 5.2以77.46%领先专有模型，而XuanYuan 4.0(36B参数)达到79.08%，在银行(78.55%)、保险(80.72%)、基金(85.21%)领域表现突出。关键发现：模型在资格考试中平均90%+，但在真实场景中仅70-80%，揭示了显著的理论-实践鸿沟。
-
-
-### 价值评估
-
-- **文章可信度**: 8/10 - 实验设计严谨，覆盖14项认证考试和3,000道场景题，评估了12+个主流模型，但开放式问题依赖自动评分模型，存在一定主观性
-- **文章重要性**: 9/10 - 首个系统覆盖金融业务全流程的评估矩阵，填补了金融LLM基准的空白，已开源 benchmark 和基线模型，将推动金融AI评估标准建立
-- **端侧设备实用价值**: 6/10 - **手机**: 低相关（金融App智能助手可参考业务能力维度），低可行（难以运行70B参数模型）。**移动PC**: 中等相关（本地部署轻量模型辅助分析），中可行（框架可简化为端侧评估标准）。**机器人**: 中等相关（银行网点服务机器人、边缘风控场景），中可行（需简化领域特定能力）。**优先级**: 低（基准主要服务服务器端评估）。**挑战**: 端侧模型<10B难以达到36B性能；金融实时性要求高，离线模型难满足实时风控。
 
 ---
 

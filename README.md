@@ -33,19 +33,38 @@ AI/CS论文总结项目。**完全本地方案**，零全局配置，上下文�
 ./scripts/batch-runner.sh --max-concurrent 8 --model anthropic/claude-3-5-sonnet "2602.21221 2310.06825"
 ```
 
+### 生成最终报告
+
+批量处理完成后，生成包含所有论文完整内容的综合报告：
+
+```bash
+./scripts/generate-final-report.sh
+```
+
+**输出**: `knowledge/reports/final_report_feb-2026.md`
+- 可点击目录（30篇论文导航）
+- 每篇论文的完整结构化分析
+- 端侧设备影响分析（手机/移动PC/机器人）
+
 ## 项目结构
 
 ```
 .
 ├── scripts/
-│   ├── read-paper.sh           # 单论文分析 CLI
-│   ├── paper-reader-prompt.md  # 分析流程 Prompt
-│   └── batch-runner.sh         # 批量处理脚本
+│   ├── read-paper.sh              # 单论文分析 CLI
+│   ├── batch-runner.sh            # 批量处理脚本
+│   ├── generate-final-report.sh   # 生成最终综合报告
+│   ├── paper-reader-prompt.md     # 分析流程 Prompt (v1)
+│   └── paper-reader-prompt-v2.md  # 分析流程 Prompt (v2 - 含端侧分析)
 ├── templates/
-│   └── structured_analysis.md.j2  # 结构化摘要模板
+│   ├── structured_analysis.md.j2  # 结构化摘要模板（含端侧设备影响）
+│   └── academic_summary.md.j2     # 学术摘要模板
 ├── knowledge/
-│   └── papers/                 # 输出目录
-└── README.md                   # 本文档
+│   ├── papers/                    # 单论文输出目录
+│   └── reports/                   # 报告输出目录
+│       ├── structured_papers/     # 结构化论文摘要
+│       └── final_report_*.md      # 最终综合报告
+└── README.md                      # 本文档
 ```
 
 ## 工作原理
@@ -69,6 +88,37 @@ AI/CS论文总结项目。**完全本地方案**，零全局配置，上下文�
 4. **生成摘要**: 使用 `paper-summary-template` skill 和结构化模板
 5. **原子写入**: 保存到 `knowledge/papers/{paper_id}.md`
 6. **立即退出**: 不进入交互模式
+
+### 完整工作流程示例
+
+```bash
+# 1. 批量分析论文（输出到 knowledge/papers/）
+./scripts/batch-runner.sh "2602.21221 2602.21224 2602.22273"
+
+# 2. （可选）移动结构化文件到 reports
+mkdir -p knowledge/reports/structured_papers
+cp knowledge/papers/*.md knowledge/reports/structured_papers/
+
+# 3. 生成最终报告
+./scripts/generate-final-report.sh
+
+# 4. 查看报告
+cat knowledge/reports/final_report_feb-2026.md
+```
+
+### 结构化摘要内容
+
+每篇论文的摘要包含：
+
+- **基本信息**: 作者、机构、arXiv ID
+- **论文内容分析**: 核心方法、解决的问题
+- **效果评估**: 关键实验数据、性能指标
+- **价值评估**: 可信度、重要性、实用价值（1-10分）
+- **端侧设备影响分析**:
+  - 智能手机相关性、应用场景、可行性
+  - 移动PC/笔记本相关性、应用潜力、可行性
+  - 机器人/边缘设备相关性、应用场景、可行性
+  - 端侧落地优先级、关键挑战
 
 ## Model 配置
 

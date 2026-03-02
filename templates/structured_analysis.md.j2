@@ -26,4 +26,4 @@
 
 - **文章可信度**: {{ credibility_score | default("?", true) }}/10 - {{ credibility_comment | default("*实验设计严谨性、数据可信度*", true) }}
 - **文章重要性**: {{ importance_score | default("?", true) }}/10 - {{ importance_comment | default("*学术/工业界影响力*", true) }}
-- **端侧设备实用价值**: {{ edge_devices_impact | default("*待补充：分析该技术对智能手机、移动PC、机器人/边缘设备的潜在影响。包括：1)与各领域的技术相关性；2)具体应用场景；3)在资源受限设备上的落地可行性；4)面临的关键挑战*", true) }}
+- **端侧设备实用价值**: {{ edge_devices_impact | default("*待补充：评分/X - 手机：相关性+场景+可行性。移动PC：相关性+场景+可行性。机器人：相关性+场景+可行性。优先级：高/中/低。挑战：关键难点*", true) }}

@@ -1,0 +1,30 @@
+{# 结构化分析模板 - 单论文深度分析 #}
+**论文ID**: {{ paper_id | default("N/A", true) }}
+
+## {{ title | default("未提供标题", true) }}
+
+
+### 基本信息
+
+- **作者**: {{ authors | default("未提供", true) }}
+- **机构**: {{ affiliation | default("未提供", true) }}
+- **arXiv**: {{ paper_id | default("N/A", true) }}
+
+
+### 论文内容分析
+
+- **核心方法**: {{ method | default("*待补充*", true) }}
+- **解决的问题**: {{ problem | default("*待补充*", true) }}
+
+
+### 效果评估（数据支撑）
+
+{{ results | default("*待补充：关键实验数据、性能指标*", true) }}
+
+
+### 价值评估
+
+- **文章可信度**: {{ credibility_score | default("?", true) }}/10 - {{ credibility_comment | default("*实验设计严谨性、数据可信度*", true) }}
+- **文章重要性**: {{ importance_score | default("?", true) }}/10 - {{ importance_comment | default("*学术/工业界影响力*", true) }}
+- **实用价值**: {{ edge_value_score | default("?", true) }}/10 - {{ edge_value_comment | default("*实际应用价值*", true) }}
+

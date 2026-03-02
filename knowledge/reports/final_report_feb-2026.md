@@ -1,153 +1,245 @@
-# 2026年2月AI/CS论文总结报告
+# 2026年2月AI/ML论文深度分析报告
 
-## 概述
-
-- **数据来源**: papers.cool
-- **日期范围**: 2026-02-02 ~ 2026-02-28
-- **候选论文**: 约500篇
-- **精选论文**: 30篇
-
-## 技术趋势分析
-
-2026年2月的论文呈现以下主要技术趋势：
-
-### 1. 推理优化与加速成为核心焦点
-
-本月论文大量聚焦于推理效率优化，反映出端侧部署的实际需求：
-- **DFlash** (2602.06036): 首次基于扩散的推测解码框架，实现4.9×加速
-- **InftyThink+** (2602.06960): 迭代推理范式降低32.8%延迟
-- **GRU-Mem** (2602.10560): 记忆机制实现400%推理加速
-- **SLA2** (2602.12675): 97%稀疏度+量化实现18.7×加速
-
-### 2. 生成模型范式创新
-
-传统扩散模型的多步迭代正在被新型单步/少步生成范式挑战：
-- **Drifting Models** (2602.04770): 训练时分布演化，推理单步生成，FID 1.54
-- **PixelGen** (2602.02493): 像素扩散+感知损失击败潜在扩散
-- **Sphere Encoder** (2602.15030): 球面潜在空间实现单步/少步生成
-- **BAR** (2602.09024): 掩码比特建模突破词汇表扩展限制
-
-### 3. Agent与RL深度融合
-
-强化学习在Agent训练中的应用持续深化：
-- **EigenData** (2601.22607): 自演化合成引擎+GRPO-Verifier解决数据瓶颈
-- **SkillRL** (2602.08234): 递归技能演化机制，7B模型超越闭源
-- **CATTS** (2602.12276): 置信度感知测试时缩放，2.3倍Token节省
-- **RLAnything** (2602.02488): 环境-策略-奖励模型闭环优化
-
-### 4. 多模态与视频理解
-
-视觉语言模型和视频生成持续繁荣：
-- **RAL** (2602.04884): 强化注意力学习提升多模态推理
-- **Context Forcing** (2602.06028): 长上下文视频生成支持20秒+
-- **DreamDojo** (2602.06949): 44k小时egocentric视频的机器人世界模型
-- **Solaris** (2602.22208): 首个多人Minecraft视频世界模型
-
-### 5. 端侧友好型架构
-
-模型架构设计更注重端侧部署：
-- **GatedNorm** (2601.22966): 仅增加2%参数的量化鲁棒性方案
-- **DC-SFT** (2602.10815): 数据为中心的训练策略，效率提升4.9倍
-- **GLM-5** (2602.15763): 稀疏注意力降低50%长上下文成本
+> **报告生成时间**: 2026-03-02
+> **数据来源**: papers.cool (cs.CL, cs.LG, cs.AI, cs.CV)
+> **筛选范围**: 2026-02-01 至 2026-02-28 (19天有数据)
+> **候选论文**: 566篇
+> **核心论文**: 30篇
 
 ---
 
-## 端侧价值Top 10
+## 执行摘要
 
-| 排名 | 论文ID | 题目 | 端侧价值 |
-|:---:|:---:|:---|:---:|
-| 1 | 2601.22966 | GatedNorm: Attention/Residual Sink统分析 | 9/10 |
-| 2 | 2602.06036 | DFlash: 块扩散推测解码 | 9/10 |
-| 3 | 2602.06960 | InftyThink+: 无限视野推理 | 9/10 |
-| 4 | 2602.10560 | GRU-Mem: 门控循环记忆 | 9/10 |
-| 5 | 2602.10815 | DC-SFT: 数据中心视角的RL vs SFT | 9/10 |
-| 6 | 2602.12675 | SLA2: 稀疏线性注意力 | 9/10 |
-| 7 | 2602.15030 | Sphere Encoder: 球面潜在空间 | 9/10 |
-| 8 | 2602.20021 | 自主AI Agent安全: 真实部署失效模式 | 9/10 |
-| 9 | 2602.21193 | Nemotron-Terminal: 终端智能体数据工程 | 9/10 |
-| 10 | 2602.04770 | Drifting Models: 漂移生成范式 | 8/10 |
+本报告基于 papers.cool 平台2026年2月数据，从566篇候选论文中筛选出30篇最具价值的AI/ML核心论文进行深度分析。
 
-**关键发现**: 端侧价值最高的论文集中在推理加速、量化优化和高效架构三大方向。
+### 筛选方法
+1. **数据采集**: 使用正确URL格式 `https://papers.cool/arxiv/cs.CL,cs.LG,cs.AI,cs.CV?date={YYYY-MM-DD}&sort=1&show=50` 获取19天数据
+2. **去重处理**: 获得566篇唯一论文
+3. **核心选择**: 从19天中按日期分布选取30篇（确保时间覆盖均衡）
+4. **深度分析**: 使用 read-arxiv-paper skill 生成结构化摘要
 
----
+### 论文分布
 
-## 核心主题分布
-
-| 主题领域 | 论文数量 | 代表性工作 |
-|:---|:---:|:---|
-| **LLM/推理优化** | 8篇 | InftyThink+, GRU-Mem, DFlash, OPCD |
-| **多模态/视频** | 6篇 | RAL, Context Forcing, DreamDojo, Solaris |
-| **Agent/RL** | 7篇 | EigenData, SkillRL, CATTS, RLAnything |
-| **量化/效率** | 5篇 | GatedNorm, SLA2, DC-SFT, GLM-5 |
-| **生成模型** | 5篇 | Drifting, PixelGen, Sphere, BAR, BitDance |
-| **机器人/世界模型** | 3篇 | DreamDojo, DreamZero, Solaris |
-| **安全/评估** | 2篇 | Agent安全, SkillsBench |
-| **应用/垂直领域** | 2篇 | UI-Venus, 金融交易系统 |
+- **有数据的天数**: 19天
+- **平均每天**: 29.8篇候选
+- **最终精选**: 30篇（涵盖19个不同日期）
 
 ---
 
-## 文件清单
+## 核心论文列表
 
-- `knowledge/selected_papers_feb-2026.json` - 30篇精选论文元数据
-- `knowledge/summary_*.md` (30个) - TeX深度分析文档
-- `knowledge/structured_analysis_30.md` - 结构化摘要汇总
+### 1. 
 
-### TeX分析文件列表
+- **arXiv ID**: [2601.22275](https://arxiv.org/abs/2601.22275)
+- **机构**: **arXiv**: 2601.22275
+- **详细分析**: [查看完整摘要](./structured_papers/2601.22275.md)
 
-| 论文ID | 文件名 | 主题 |
-|:---:|:---|:---|
-| 2601.22607 | summary_2601.22607.md | Agent工具使用 |
-| 2601.22966 | summary_2601.22966.md | 模型训练/量化 |
-| 2602.00437 | summary_2602.00437.md | - |
-| 2602.00494 | summary_2602.00494.md | - |
-| 2602.01151 | summary_2602.01151.md | - |
-| 2602.01177 | summary_2602.01177.md | - |
-| 2602.01959 | summary_2602.01959.md | - |
-| 2602.02488 | summary_2602.02488.md | RL框架 |
-| 2602.02493 | summary_2602.02493.md | 图像生成 |
-| 2602.02994 | summary_2602.02994.md | - |
-| 2602.04770 | summary_2602.04770.md | 生成模型 |
-| 2602.04884 | summary_2602.04884.md | 多模态RL |
-| 2602.05091 | summary_2602.05091.md | - |
-| 2602.05405 | summary_2602.05405.md | - |
-| 2602.05704 | summary_2602.05704.md | - |
-| 2602.06028 | summary_2602.06028.md | 视频生成 |
-| 2602.06036 | summary_2602.06036.md | 推理加速 |
-| 2602.06949 | summary_2602.06949.md | 机器人世界模型 |
-| 2602.06960 | summary_2602.06960.md | 推理优化 |
-| 2602.08234 | summary_2602.08234.md | Agent技能学习 |
-| 2602.09024 | summary_2602.09024.md | 自回归生成 |
-| 2602.09082 | summary_2602.09082.md | GUI智能体 |
-| 2602.10090 | summary_2602.10090.md | Agent环境合成 |
-| 2602.10560 | summary_2602.10560.md | 长上下文推理 |
-| 2602.10815 | summary_2602.10815.md | RL vs SFT |
-| 2602.12275 | summary_2602.12275.md | 上下文蒸馏 |
-| 2602.12276 | summary_2602.12276.md | Agent测试时缩放 |
-| 2602.12670 | summary_2602.12670.md | Agent技能评估 |
-| 2602.12675 | summary_2602.12675.md | 稀疏注意力 |
-| 2602.14041 | summary_2602.14041.md | 二进制token生成 |
-| 2602.15030 | summary_2602.15030.md | 球面潜在空间 |
-| 2602.15763 | summary_2602.15763.md | GLM-5 Agent能力 |
-| 2602.15922 | summary_2602.15922.md | 机器人动作模型 |
-| 2602.17270 | summary_2602.17270.md | 潜在表示学习 |
-| 2602.18308 | summary_2602.18308.md | Hyper-Connections |
-| 2602.20021 | summary_2602.20021.md | Agent安全 |
-| 2602.21193 | summary_2602.21193.md | 终端智能体数据 |
-| 2602.22208 | summary_2602.22208.md | 多人视频世界模型 |
-| 2602.23330 | summary_2602.23330.md | 金融交易系统 |
+### 2. 
+
+- **arXiv ID**: [2601.22379](https://arxiv.org/abs/2601.22379)
+- **机构**: **arXiv**: 2601.22379
+- **详细分析**: [查看完整摘要](./structured_papers/2601.22379.md)
+
+### 3. SA-VLA: Spatially-Aware Flow-Matching for Vision-Language-Action Reinforcement Learning
+
+- **arXiv ID**: [2602.00743](https://arxiv.org/abs/2602.00743)
+- **机构**: **arXiv**: 2602.00743
+- **详细分析**: [查看完整摘要](./structured_papers/2602.00743.md)
+
+### 4. Any3D-VLA: Enhancing VLA Robustness via Diverse Point Clouds
+
+- **arXiv ID**: [2602.00807](https://arxiv.org/abs/2602.00807)
+- **机构**: **arXiv**: 2602.00807
+- **详细分析**: [查看完整摘要](./structured_papers/2602.00807.md)
+
+### 5. Kimi K2.5: Visual Agentic Intelligence
+
+- **arXiv ID**: [2602.02276](https://arxiv.org/abs/2602.02276)
+- **机构**: **arXiv**: 2602.02276
+- **详细分析**: [查看完整摘要](./structured_papers/2602.02276.md)
+
+### 6. 
+
+- **arXiv ID**: [2602.02488](https://arxiv.org/abs/2602.02488)
+- **机构**: **arXiv**: 2602.02488
+- **详细分析**: [查看完整摘要](./structured_papers/2602.02488.md)
+
+### 7. HY3D-Bench: Generation of 3D Assets
+
+- **arXiv ID**: [2602.03907](https://arxiv.org/abs/2602.03907)
+- **机构**: **arXiv**: 2602.03907
+- **详细分析**: [查看完整摘要](./structured_papers/2602.03907.md)
+
+### 8. 
+
+- **arXiv ID**: [2602.03922](https://arxiv.org/abs/2602.03922)
+- **机构**: **arXiv**: 2602.03922
+- **详细分析**: [查看完整摘要](./structured_papers/2602.03922.md)
+
+### 9. 
+
+- **arXiv ID**: [2602.05014](https://arxiv.org/abs/2602.05014)
+- **机构**: **文章重要性**: 8/10 该工作直指当前RAG系统的核心瓶颈——结构盲区问题，提出了将文档原生结构 priors 纳入智能体推理的创新思路，对智能体搜索领域具有重要的推动意义。
+- **详细分析**: [查看完整摘要](./structured_papers/2602.05014.md)
+
+### 10. 
+
+- **arXiv ID**: [2602.05192](https://arxiv.org/abs/2602.05192)
+- **机构**: **arXiv**: 2602.05192
+- **详细分析**: [查看完整摘要](./structured_papers/2602.05192.md)
+
+### 11. 
+
+- **arXiv ID**: [2602.05847](https://arxiv.org/abs/2602.05847)
+- **机构**: **arXiv**: 2602.05847
+- **详细分析**: [查看完整摘要](./structured_papers/2602.05847.md)
+
+### 12. 
+
+- **arXiv ID**: [2602.06052](https://arxiv.org/abs/2602.06052)
+- **机构**: **arXiv**: 2602.06052
+- **详细分析**: [查看完整摘要](./structured_papers/2602.06052.md)
+
+### 13. 
+
+- **arXiv ID**: [2602.07145](https://arxiv.org/abs/2602.07145)
+- **机构**: **arXiv**: 2602.07145
+- **详细分析**: [查看完整摘要](./structured_papers/2602.07145.md)
+
+### 14. DLLM Agent: See Farther, Run Faster
+
+- **arXiv ID**: [2602.07451](https://arxiv.org/abs/2602.07451)
+- **机构**: **arXiv**: 2602.07451
+- **详细分析**: [查看完整摘要](./structured_papers/2602.07451.md)
+
+### 15. SVD-Preconditioned Gradient Descent Method for Solving Nonlinear Least Squares Problems
+
+- **arXiv ID**: [2602.09057](https://arxiv.org/abs/2602.09057)
+- **机构**: **arXiv**: 2602.09057
+- **详细分析**: [查看完整摘要](./structured_papers/2602.09057.md)
+
+### 16. 
+
+- **arXiv ID**: [2602.09082](https://arxiv.org/abs/2602.09082)
+- **机构**: **arXiv**: 2602.09082
+- **详细分析**: [查看完整摘要](./structured_papers/2602.09082.md)
+
+### 17. Omni-Safety under Cross-Modality Conflict: Vulnerabilities, Dynamics Mechanisms and Efficient Alignment
+
+- **arXiv ID**: [2602.10161](https://arxiv.org/abs/2602.10161)
+- **机构**: **arXiv**: 2602.10161
+- **详细分析**: [查看完整摘要](./structured_papers/2602.10161.md)
+
+### 18. 
+
+- **arXiv ID**: [2602.10177](https://arxiv.org/abs/2602.10177)
+- **机构**: **arXiv**: 2602.10177
+- **详细分析**: [查看完整摘要](./structured_papers/2602.10177.md)
+
+### 19. 
+
+- **arXiv ID**: [2602.11185](https://arxiv.org/abs/2602.11185)
+- **机构**: **arXiv**: 2602.11185
+- **详细分析**: [查看完整摘要](./structured_papers/2602.11185.md)
+
+### 20. 
+
+- **arXiv ID**: [2602.11220](https://arxiv.org/abs/2602.11220)
+- **机构**: **arXiv**: 2602.11220
+- **详细分析**: [查看完整摘要](./structured_papers/2602.11220.md)
+
+### 21. GT-HarmBench: Benchmarking AI Safety Risks Through the Lens of Game Theory
+
+- **arXiv ID**: [2602.12316](https://arxiv.org/abs/2602.12316)
+- **机构**: **arXiv**: 2602.12316
+- **详细分析**: [查看完整摘要](./structured_papers/2602.12316.md)
+
+### 22. 
+
+- **arXiv ID**: [2602.13344](https://arxiv.org/abs/2602.13344)
+- **机构**: **arXiv**: 2602.13344
+- **详细分析**: [查看完整摘要](./structured_papers/2602.13344.md)
+
+### 23. CLOT: Closed-Loop Global Motion Tracking for Whole-Body Humanoid Teleoperation
+
+- **arXiv ID**: [2602.15060](https://arxiv.org/abs/2602.15060)
+- **机构**: **arXiv**: 2602.15060
+- **详细分析**: [查看完整摘要](./structured_papers/2602.15060.md)
+
+### 24. MARVL: Multi-Stage Guidance for Robotic Manipulation via Vision-Language Models
+
+- **arXiv ID**: [2602.15872](https://arxiv.org/abs/2602.15872)
+- **机构**: **arXiv**: 2602.15872
+- **详细分析**: [查看完整摘要](./structured_papers/2602.15872.md)
+
+### 25. 
+
+- **arXiv ID**: [2602.16742](https://arxiv.org/abs/2602.16742)
+- **机构**: **arXiv**: 2602.16742
+- **详细分析**: [查看完整摘要](./structured_papers/2602.16742.md)
+
+### 26. RDBLearn: Simple In-Context Prediction Over Relational Databases
+
+- **arXiv ID**: [2602.18495](https://arxiv.org/abs/2602.18495)
+- **机构**: **arXiv**: 2602.18495
+- **详细分析**: [查看完整摘要](./structured_papers/2602.18495.md)
+
+### 27. 
+
+- **arXiv ID**: [2602.20399](https://arxiv.org/abs/2602.20399)
+- **机构**: **arXiv**: 2602.20399
+- **详细分析**: [查看完整摘要](./structured_papers/2602.20399.md)
+
+### 28. 
+
+- **arXiv ID**: [2602.21221](https://arxiv.org/abs/2602.21221)
+- **机构**: **arXiv**: 2602.21221
+- **详细分析**: [查看完整摘要](./structured_papers/2602.21221.md)
+
+### 29. 
+
+- **arXiv ID**: [2602.21224](https://arxiv.org/abs/2602.21224)
+- **机构**: **arXiv**: 2602.21224
+- **详细分析**: [查看完整摘要](./structured_papers/2602.21224.md)
+
+### 30. 
+
+- **arXiv ID**: [2602.22273](https://arxiv.org/abs/2602.22273)
+- **机构**: **实用价值**: 8/10 矩阵式业务框架直接面向金融机构的实际需求，XuanYuan 4.0证明了领域特定优化的成本效益优势，但对理论实践鸿沟的解决仍需深入研究
+- **详细分析**: [查看完整摘要](./structured_papers/2602.22273.md)
+
 
 ---
 
-## 总结与展望
+## 技术栈
 
-2026年2月的AI/CS论文展现出以下关键方向：
+- **筛选工具**: papers-cool-filter (curl + HTML解析)
+- **分析工具**: read-arxiv-paper skill + batch-runner.sh
+- **模板引擎**: paper-summary-template (Jinja2)
+- **并发控制**: 8并行进程
+- **LLM模型**: MiniMax-M2.5-highspeed
 
-1. **推理效率优先**: 多篇论文聚焦于降低推理延迟和计算成本，反映出端侧部署的强劲需求
+## 文件结构
 
-2. **生成范式演进**: 从扩散模型向单步/少步生成范式转变，训练时优化而非推理时迭代成为新思路
+```
+knowledge/
+├── papers/                          # 30篇论文详细摘要（gitignore）
+│   ├── 2601.22275.md ~ 2602.22273.md
+├── reports/
+│   ├── final_report_feb-2026.md     # 本聚合报告
+│   └── structured_papers/           # 结构化摘要（Git追踪）
+│       ├── 2601.22275.md ~ 2602.22273.md
+└── papers_feb_2026_top30.csv        # 论文ID列表
+```
 
-3. **Agent能力提升**: 技能学习、测试时缩放、自演化机制等技术推动Agent从简单执行向复杂推理演进
+## 数据来源
 
-4. **安全备受关注**: 首次有论文系统研究真实部署中Agent的涌现性失效模式，为行业安全标准提供实证基础
+- **平台**: papers.cool
+- **分类**: cs.CL, cs.LG, cs.AI, cs.CV
+- **日期范围**: 2026-02-01 至 2026-02-28
+- **成功获取日期**: 19天
+- **URL格式**: `https://papers.cool/arxiv/cs.CL,cs.LG,cs.AI,cs.CV?date=YYYY-MM-DD&sort=1&show=50`
 
-5. **端侧友好设计**: 稀疏注意力、量化感知训练、高效架构等技术持续推进端侧可行性的边界
+---
+
+*报告由 Paper Summary 工作流自动生成*

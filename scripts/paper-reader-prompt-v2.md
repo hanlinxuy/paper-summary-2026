@@ -57,8 +57,11 @@ cd {workdir} && tar -xzf paper.tar.gz -C source/ 2>/dev/null || mv paper.tar.gz 
 - `credibility_comment`: 可信度评价
 - `importance_score`: 1-10 评分（学术/工业界影响力）
 - `importance_comment`: 重要性评价
-- `edge_value_score`: 1-10 评分（实际应用价值）
-- `edge_value_comment`: 实用价值评价
+- `edge_devices_impact`: 端侧设备实用价值分析（综合描述，重点分析该技术对以下三类设备的影响）：
+  - **智能手机**: 技术相关性、具体应用场景、在移动SoC/手机端落地的可行性（功耗/算力/存储限制）
+  - **移动PC/笔记本电脑**: 技术相关性、在笔记本/平板上的应用潜力、移动端落地的可行性
+  - **机器人/边缘AI设备**: 技术相关性、在机器人/IoT/边缘设备上的应用场景、在资源受限设备落地的可行性
+  - 包含综合评估：端侧落地优先级（高/中/低）、关键挑战
 
 **使用 skill**: 调用 `paper-summary-template` skill，传入上述变量和模板路径 `templates/structured_analysis.md.j2`，生成最终 Markdown。
 

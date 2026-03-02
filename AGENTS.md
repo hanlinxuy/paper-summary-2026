@@ -4,7 +4,7 @@
 
 ```
 .
-├── .agents/skills/          # Agent技能
+├── .claude/skills/          # Agent技能
 │   ├── paper-summary-template/
 │   ├── kimi-summary-extractor/
 │   ├── papers-cool-filter/

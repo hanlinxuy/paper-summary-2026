@@ -54,6 +54,8 @@ AI/CS论文总结项目。**完全本地方案**，零全局配置，上下文�
 │   ├── read-paper.sh              # 单论文分析 CLI
 │   ├── batch-runner.sh            # 批量处理脚本
 │   ├── generate-final-report.sh   # 生成最终综合报告
+│   ├── generate-final-report-v2.sh # 生成按新排名排序的报告
+│   ├── rank_existing_papers.py    # 重新排序论文（热度+端侧）
 │   ├── paper-reader-prompt.md     # 分析流程 Prompt (v1)
 │   └── paper-reader-prompt-v2.md  # 分析流程 Prompt (v2 - 含端侧分析)
 ├── templates/
@@ -61,9 +63,11 @@ AI/CS论文总结项目。**完全本地方案**，零全局配置，上下文�
 │   └── academic_summary.md.j2     # 学术摘要模板
 ├── knowledge/
 │   ├── papers/                    # 单论文输出目录
-│   └── reports/                   # 报告输出目录
-│       ├── structured_papers/     # 结构化论文摘要
-│       └── final_report_*.md      # 最终综合报告
+│   ├── reports/                   # 报告输出目录
+│   │   ├── structured_papers/     # 结构化论文摘要
+│   │   └── final_report_*.md      # 最终综合报告
+│   ├── selected_papers_*.json     # 筛选结果
+│   └── selected_*_ids.txt         # 排序后的论文ID列表
 └── README.md                      # 本文档
 ```
 
@@ -106,6 +110,37 @@ cp knowledge/papers/*.md knowledge/reports/structured_papers/
 cat knowledge/reports/final_report_feb-2026.md
 ```
 
+### 月度完整工作流程
+
+每月执行一次完整流程：
+
+```bash
+# Step 1: 新建分支
+git checkout main && git pull
+git checkout -b refactor/{月份}-full-pipeline
+
+# Step 2: 批量分析论文
+./scripts/batch-runner.sh "论文ID列表"
+
+# Step 3: 移动结构化文件
+mkdir -p knowledge/reports/structured_papers
+cp knowledge/papers/*.md knowledge/reports/structured_papers/
+
+# Step 4: 重新排序（热度70% + 端侧30%）
+python3 scripts/rank_existing_papers.py
+
+# Step 5: 生成按新排名的报告
+./scripts/generate-final-report-v2.sh
+
+# Step 6: 提交并推送
+git add -A && git commit -m "feat: {月份}论文完整分析"
+git push -u origin refactor/{月份}-full-pipeline
+
+# Step 7: 合并到main
+gh pr create --title "{月份}论文完整分析" --body "筛选方式: 热度70% + 端侧30%"
+gh pr merge --squash
+```
+
 ### 结构化摘要内容
 
 每篇论文的摘要包含：
@@ -125,6 +160,25 @@ cat knowledge/reports/final_report_feb-2026.md
 | 热度 | 70% | papers.cool 点击排名 |
 | 端侧相关性 | 30% | 对手机/移动PC/机器人的潜在价值 |
 | 架构判断 | 标注 | Transformer/MoE/Diffusion/RNN/CNN/VLA等 |
+
+#### 端侧相关性关键词
+
+```python
+EDGE_KEYWORDS = [
+    "edge", "mobile", "on-device", "efficient", "tiny", "lightweight",
+    "quantization", "pruning", "distillation", "compression",
+    "inference", "latency", "real-time", "low-power", "acceleration",
+    "optimization", "compact", "sparse", "hardware", "deploy",
+    "attention", "flash", "memory", "cache", "kv", "fast", "speed"
+]
+```
+
+#### 模型架构检测
+
+自动识别的架构类型：
+- Transformer, MoE, Diffusion, Mamba/SSM
+- RNN, CNN, ViT, VLA/Robot
+- Agent, Reasoning, Memory, Video, 3D
 
 ## Model 配置
 

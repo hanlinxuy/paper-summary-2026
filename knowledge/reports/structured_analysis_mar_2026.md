@@ -1,296 +1,284 @@
-# 论文推荐报告 - 2026年3月1日至9日
+# 论文推荐报告 - 2026年3月 LLM/VLM重点筛选
 
 > 筛选日期: 2026-03-01 至 2026-03-09
-> 筛选分类: cs.CL, cs.LG, cs.AI, cs.CV
+> 筛选分类: cs.CL, cs.LG, cs.AI (去除纯CV)
 > 数据来源: papers.cool
-> 共筛选 **10篇** 高价值论文
+> 共筛选 **10篇** LLM/VLM高价值论文
 
 ---
 
-## 1. FlashPrefill: 超快长上下文预填充框架
+## 1. FlashAttention-4: Blackwell GPU深度优化
 
-**arXiv**: [2603.06199](https://arxiv.org/abs/2603.06199)
-**作者**: Qihang Fan, Huaibo Huang, Zhiying Wu, Juqiu Wang, Bingning Wang, Ran He
-**分类**: cs.CL, cs.AI
-**发布时间**: 2026-03-06
+**arXiv**: [2603.05451](https://arxiv.org/abs/2603.05451)
+**作者**: Ted Zadouri, Markus Hoehnerbach, Jay Shah, Timmy Liu, Vijay Thakkar, Tri Dao
+**分类**: cs.CL
+**发布时间**: 2026-03-05
 
-**评分**: ⭐ 9/10 | **端侧价值**: 🔥 9/10 | **架构**: Transformer
+**评分**: ⭐ 10/10 | **端侧价值**: 🔥 10/10 | **架构**: Transformer
 
 ### 推荐理由
-提出动态稀疏注意力模式发现机制，在256K序列上实现**27.78倍加速**，4K上下文仍保持1.71倍加速，是长文本端侧部署的关键突破。
+FlashAttention最新版本，针对**Blackwell架构(B200/GB200)**专门优化，实现**1.3x加速**超越cuDNN 9.13，**2.7x加速**超越Triton，达到**1613 TFLOPs/s (71%利用率)**。
 
 ### 核心贡献
-- **瞬时模式发现**: 同时定位垂直、斜线、块稀疏三种注意力模式
-- **动态阈值机制**: 无需排序或累加注意力分数，消除长尾分布
-- **全长度段优势**: 从4K到256K均保持显著加速，短文本不降速
+- **非对称硬件适配**: 针对tensor core翻倍但其他单元未同步增长的Blackwell特性重新设计pipeline
+- **完全异步MMA**: 利用更大tile size的异步MMA操作
+- **软件模拟指数运算**: 减少非矩阵乘法操作
+- **CuTe-DSL实现**: 20-30x更快的编译时间
 
 ### 技术亮点
 | 指标 | 数值 |
 |------|------|
-| 长序列加速比 | 27.78x @ 256K |
-| 短序列加速比 | 1.71x @ 4K |
-| 稀疏模式 | 垂直+斜线+块稀疏 |
+| vs cuDNN 9.13 | 1.3x加速 |
+| vs Triton | 2.7x加速 |
+| 峰值算力 | 1613 TFLOPs/s |
+| 利用率 | 71% |
 
 ### 端侧意义
-长上下文能力是端侧大模型的核心瓶颈，FlashPrefill的短文本不降速特性使其成为端侧部署的理想选择。
+Blackwell将成为下一代AI基础设施主流，FlashAttention-4的优化对端侧推理部署有重要参考价值。
 
 ---
 
-## 2. MoEless: 基于Serverless的MoE高效推理框架
+## 2. Reasoning Theater: 解耦模型信念与思维链
 
-**arXiv**: [2603.06350](https://arxiv.org/abs/2603.06350)
-**作者**: Hanfei Yu, Bei Ouyang, Shwai He, Ang Li, Hao Wang
-**分类**: cs.DC, cs.AI, cs.LG
-**发布时间**: 2026-03-06
+**arXiv**: [2603.05488](https://arxiv.org/abs/2603.05488)
+**作者**: Siddharth Boppana, Annabel Ma, Max Loeffler, Raphael Sarfati, Eric Bigelow, Atticus Geiger, Owen Lewis, Jack Merullo
+**分类**: cs.CL, cs.AI, cs.LG
+**发布时间**: 2026-03-05
 
-**评分**: ⭐ 9/10 | **端侧价值**: 🔥 8/10 | **架构**: MoE
+**评分**: ⭐ 9/10 | **端侧价值**: 🔥 8/10 | **架构**: Transformer + CoT
 
 ### 推荐理由
-首个Serverless MoE推理框架，通过专家负载预测解决专家并行中的负载失衡问题，**推理延迟降低43%，成本降低84%**。
+首次揭示推理模型中的**"表演性思维链"**现象：模型对答案很有信心但继续生成token不揭示内在信念。通过激活探测发现推理过程可提前终止，**MMLU减少80% tokens**，**GPQA减少30% tokens**。
 
 ### 核心贡献
-- **专家负载预测**: 轻量级分层预测器提前识别滞后专家
-- **Serverless专家**: 动态扩缩容实现专家级弹性
-- **优化放置策略**: 最大化函数局部性，提升GPU利用率
+- **表演性CoT发现**: 模型在简单任务上生成冗余推理
+- **激活探测方法**: 比CoT监控更早解码最终答案
+- **探测引导早退**: 自适应计算分配
 
 ### 技术亮点
-| 指标 | 数值 |
-|------|------|
-| 推理延迟降低 | 43% |
-| 推理成本降低 | 84% |
-| 部署架构 | Serverless + EP |
+| 任务类型 | Token减少 |
+|----------|-----------|
+| MMLU (简单) | 80% |
+| GPQA-Diamond (困难) | 30% |
 
 ### 端侧意义
-MoE架构在端侧部署面临专家内存占用大的挑战，MoEless的Serverless思路为端侧MoE推理提供了新范式。
+推理加速是端侧部署的核心瓶颈，该研究提供了基于探测的早退策略。
 
 ---
 
-## 3. Penguin-VL: 基于LLM的视觉编码器探索VLM效率极限
+## 3. Memex(RL): 长程LLM智能体的索引经验记忆
 
-**arXiv**: [2603.06569](https://arxiv.org/abs/2603.06569)
-**作者**: Boqiang Zhang, Lei Ke, Ruihan Yang, Qi Gao, Tianyuan Qu, Rossell Chen, Dong Yu, Leoweiliang
-**分类**: cs.CV
-**发布时间**: 2026-03-06
+**arXiv**: [2603.04257](https://arxiv.org/abs/2603.04257)
+**作者**: Zhenting Wang, Huancheng Chen, Jiayun Wang, Wei Wei
+**分类**: cs.CL, cs.LG
+**发布时间**: 2026-03-04
 
-**评分**: ⭐ 8/10 | **端侧价值**: 🔥 9/10 | **架构**: VLM
+**评分**: ⭐ 9/10 | **端侧价值**: 🔥 9/10 | **架构**: LLM Agent
 
 ### 推荐理由
-突破CLIP依赖，用**纯LLM初始化的视觉编码器**实现更强视觉表征，2B/8B小模型在文档理解、视觉知识任务上超越Qwen3-VL。
+解决LLM智能体在长程任务上的**上下文窗口瓶颈**，提出无损压缩记忆机制，保留完整证据而非简单截断或摘要，理论保证有界解引用同时保持决策质量。
 
 ### 核心贡献
-- **LLM-based编码器**: 从文本LLM初始化视觉编码器，避免对比学习目标不匹配
-- **细粒度视觉线索**: 保留空间和时序细节，优于对比学习的类别级不变性
-- **数据效率**: 更少的训练数据达到更好的效果
+- **索引记忆机制**: 压缩上下文但不丢弃证据
+- **MemexRL框架**: 通过强化学习优化写入/读取行为
+- **理论分析**: 证明有界解引用保持决策质量
 
 ### 技术亮点
-| 任务类型 | 表现 |
-|----------|------|
-| 数学推理 | 与Qwen3-VL相当 |
-| 文档理解 | 超越Qwen3-VL |
-| 视觉知识 | 超越Qwen3-VL |
-| 视频理解 | 超越Qwen3-VL |
+- 工作上下文显著缩小
+- 保留完整证据可按需解引用
+- 解决长程任务的上下文爆炸问题
 
 ### 端侧意义
-端侧VLM需要极致效率，Penguin-VL证明了更好的视觉表征比单纯扩大模型规模更重要，为端侧VLM设计提供了新思路。
+端侧智能体面临严重上下文限制，Memex提供了高效的长程记忆方案。
 
 ---
 
-## 4. Omni-Diffusion: 统一多模态理解与生成
+## 4. The Spike, the Sparse and the Sink: Attention机制深层解析
 
-**arXiv**: [2603.06577](https://arxiv.org/abs/2603.06577)
-**作者**: Lijiang Li, Zuwei Long, Yunhang Shen, Heting Gao, Haoyu Cao, Xing Sun, Caifeng Shan, Ran He, Chaoyou Fu
-**分类**: cs.CV
-**发布时间**: 2026-03-06
+**arXiv**: [2603.05498](https://arxiv.org/abs/2603.05498)
+**作者**: Shangwen Sun, Alfredo Canziani, Yann LeCun, Jiachen Zhu
+**分类**: cs.AI, cs.CL
+**发布时间**: 2026-03-05
 
-**评分**: ⭐ 8/10 | **端侧价值**: 🔥 7/10 | **架构**: Diffusion
+**评分**: ⭐ 9/10 | **端侧价值**: 🔥 8/10 | **架构**: Transformer
 
 ### 推荐理由
-首个**纯基于Masked离散Diffusion**的多模态大模型，统一文本、语音、图像的理解与生成，为多模态基础模型提供了AR架构之外的新选择。
+Yann LeCun团队系统研究Transformer中的**大规模激活**和**注意力 sinks**现象，揭示这两个现象是现代Transformer设计的架构产物，**Pre-norm配置**是关键选择。
 
 ### 核心贡献
-- **Diffusion骨干**: 用Masked离散Diffusion替代自回归架构
-- **Any-to-Any**: 支持任意模态组合的理解与生成
-- **联合分布建模**: 直接建模离散多模态token的联合分布
+- **大规模激活**: 少数token在少数通道显示极端异常值，跨层产生近似恒定表示
+- **注意力sinks**: 特定token吸引不成比例的注意力，与语义无关
+- **Pre-norm消融**: 移除pre-norm使两个现象解耦
 
 ### 技术亮点
-- 多模态任务表现与现有SOTA相当或更优
-- 支持双模态和复杂多模态场景
-- 扩散模型在多模态领域的潜力验证
+- 大规模激活全局操作：作为隐式参数
+- 注意力sinks局部操作：调制注意力输出和短程依赖
 
 ### 端侧意义
-扩散模型在图像生成质量上有优势，但推理效率一直是瓶颈。Omni-Diffusion为多模态端侧模型提供了新的架构可能性。
+深入理解Transformer内部机制有助于设计更高效的端侧模型。
 
 ---
 
-## 5. MLLMs as Image Classifiers: 多模态大模型分类评估协议
+## 5. AgentIR: 深度研究智能体的推理感知检索
 
-**arXiv**: [2603.06578](https://arxiv.org/abs/2603.06578)
-**作者**: Nikita Kisel, Illia Volkov, Klara Janouskova, Jiri Matas
-**分类**: cs.CV
-**发布时间**: 2026-03-06
+**arXiv**: [2603.04384](https://arxiv.org/abs/2603.04384)
+**作者**: Zijian Chen, Xueguang Ma, Shengyao Zhuang, Jimmy Lin, Akari Asai, Victor Zhong
+**分类**: cs.CL
+**发布时间**: 2026-03-04
 
-**评分**: ⭐ 7/10 | **端侧价值**: 🔥 6/10 | **架构**: MLLM
+**评分**: ⭐ 8/10 | **端侧价值**: 🔥 7/10 | **架构**: RAG + Agent
 
 ### 推荐理由
-系统分析MLLM分类评估中的协议问题，发现**标注质量可带来最高10.8%的准确率提升**，重新评估了MLLM与监督模型的差距。
+首个**推理感知检索**范式，将智能体的推理轨迹与查询联合嵌入。训练模型AgentIR-4B在BrowseComp-Plus上达到**68%准确率**，超越2倍大小的传统模型。
 
 ### 核心贡献
-- **协议问题识别**: 发现模型输出被丢弃、弱干扰项、开放世界映射等问题
-- **ReGT数据集**: 625类ImageNet多标签重新标注
-- **设计选择量化**: 批大小、图像顺序、文本编码器选择的影响
+- **推理感知检索**: 联合嵌入推理轨迹和查询
+- **DR-Synth数据合成**: 从标准QA数据集生成训练数据
+- **显著性能提升**: 68% vs 50% (2倍大模型) vs 37% (BM25)
 
 ### 技术亮点
-| 发现 | 影响 |
-|------|------|
-| 标注修正带来的提升 | 最高+10.8% |
-| MLLM辅助标注确认率 | ~50%困难案例 |
-| 与监督模型差距 | 比此前认为的小 |
+- 利用智能体生成的显式推理揭示丰富意图
+- 训练数据合成方法可扩展
 
 ### 端侧意义
-准确的评估协议对端侧模型选型至关重要，该研究为端侧MLLM评估提供了更可靠的方法论。
+检索增强是端侧模型的关键能力，该研究提升了RAG的准确性。
 
 ---
 
-## 6. VG3S: 视觉几何引导的3D Gaussian Splatting
+## 6. Phi-4-reasoning-vision-15B: 小型多模态推理模型
 
-**arXiv**: [2603.06210](https://arxiv.org/abs/2603.06210)
-**作者**: Xiaoyang Yan, Muleilan Pei, Shaojie Shen
-**分类**: cs.CV, cs.RO
-**发布时间**: 2026-03-06
+**arXiv**: [2603.03975](https://arxiv.org/abs/2603.03975)
+**作者**: Jyoti Aneja, Michael Harrison, Neel Joshi, Tyler LaBonte, John Langford, Eduardo Salinas
+**分类**: cs.AI, cs.CV
+**发布时间**: 2026-03-04
 
-**评分**: ⭐ 8/10 | **端侧价值**: 🔥 8/10 | **架构**: 3DGS + VFM
-**应用场景**: 自动驾驶、机器人
+**评分**: ⭐ 8/10 | **端侧价值**: 🔥 9/10 | **架构**: VLM (15B)
 
 ### 推荐理由
-将视觉基础模型(VFM)的几何先验注入3D Gaussian Splatting，在nuScenes上实现**IoU提升12.6%，mIoU提升7.5%**。
+微软发布的小型**开源多模态推理模型**，展示通过精心的架构选择和严格的数据筛选，15B模型能达到与更大模型竞争的性能，擅长科学和数学推理以及UI理解。
 
 ### 核心贡献
-- **层次几何特征适配器**: 即插即用，支持多种VFM
-- **跨视图3D几何接地**: 充分利用冻结VFM的几何先验
-- **特征聚合与重组**: 多尺度特征对齐
+- **数据质量优先**: 系统性过滤、错误纠正和合成增强
+- **高分辨率编码器**: 动态分辨率显著改善结果
+- **混合推理数据**: 显式模式token支持快速回答和链式推理切换
+
+### 技术亮点
+- 紧凑模型实现竞争性能
+- 更少训练和推理计算
+- 推理/非推理模式切换
+
+### 端侧意义
+**端侧友好**的小型VLM，在手机/设备上具有实际部署价值。
+
+---
+
+## 7. MOOSE-Star: 科学发现的可行训练框架
+
+**arXiv**: [2603.03756](https://arxiv.org/abs/2603.03756)
+**作者**: Zonglin Yang, Lidong Bing
+**分类**: cs.LG, cs.CE, cs.CL
+**发布时间**: 2026-03-04
+
+**评分**: ⭐ 8/10 | **端侧价值**: 🔥 6/10 | **架构**: LLM
+
+### 推荐理由
+首次解决直接建模科学发现生成过程P(hypothesis|background)的**组合复杂度爆炸**问题(O(N^k))，通过分解子任务和动机引导分层搜索将复杂度降至O(log N)。
+
+### 核心贡献
+- **MOOSE-Star框架**: 统一框架实现可行训练和可扩展推理
+- **分解子任务**: 从发现概率方程导出
+- **TOMATO-Star数据集**: 108,717分解论文
+
+### 技术亮点
+- 暴力采样遇到"复杂度墙"
+- MOOSE-Star展现持续测试时扩展
+
+### 端侧意义
+为科学LLM提供可行训练范式，间接推动端侧科学应用。
+
+---
+
+## 8. AriadneMem: LLM智能体的终身记忆系统
+
+**arXiv**: [2603.03290](https://arxiv.org/abs/2603.03290)
+**作者**: Wenhui Zhu, Xiwen Chen, Zhipeng Wang, Jingjing Wang, Xuanzhao Dong, Minzhou Huang, Rui Cai, Hejian Sang, Hao Wang, Peijie Qiu, Yueyue Deng, Prayag Tiwari, Brendan Hogan Rappazzo, Yalin Wang
+**分类**: cs.CL, cs.AI, cs.IR, cs.LG
+**发布时间**: 2026-02-05
+
+**评分**: ⭐ 8/10 | **端侧价值**: 🔥 8/10 | **架构**: LLM Agent
+
+### 推荐理由
+解决长程对话中的两个核心挑战：**断连证据**(多跳答案需要链接时间分布的事实)和**状态更新**(演变信息与旧日志冲突)。**多跳F1提升15.2%**，**平均F1提升9.0%**，**运行时减少77.8%**。
+
+### 核心贡献
+- **离线构建阶段**: 熵感知门控过滤噪声 + 冲突感知粗化合并
+- **在线推理阶段**: 算法桥接发现 + 单次拓扑感知合成
 
 ### 技术亮点
 | 指标 | 提升 |
 |------|------|
-| IoU | +12.6% |
-| mIoU | +7.5% |
-| 泛化能力 | 跨VFM通用 |
+| 多跳F1 | +15.2% |
+| 平均F1 | +9.0% |
+| 运行时减少 | 77.8% |
+| 上下文token | 仅497 |
 
 ### 端侧意义
-3D语义占据预测是自动驾驶和机器人的核心感知任务，VG3S的几何增强方法提升了纯视觉方案的效果，对端侧机器人视觉有重要价值。
+高效的记忆系统对端侧智能体至关重要。
 
 ---
 
-## 7. OVGGT: O(1)常数成本流式视觉几何Transformer
+## 9. SE-Search: 基于记忆和密集奖励的自演进搜索智能体
 
-**arXiv**: [2603.05959](https://arxiv.org/abs/2603.05959)
-**作者**: Si-Yu Lu, Po-Ting Chen, Hui-Che Hsu, Sin-Ye Jhong, Wen-Huang Cheng, Yung-Yao Chen
-**分类**: cs.CV
-**发布时间**: 2026-03-06
+**arXiv**: [2603.03293](https://arxiv.org/abs/2603.03293)
+**作者**: Jian Li, Yizhang Jin, Dongqi Liu, Hang Ding, Jiafu Wu, Dongsheng Chen, Yunhang Shen, Yulei Qin, Ying Tai, Chengjie Wang, Xiaotong Yuan, Yabiao Wang
+**分类**: cs.CL
+**发布时间**: 2026-02-06
 
-**评分**: ⭐ 8/10 | **端侧价值**: 🔥 9/10 | **架构**: Transformer
-**应用场景**: 机器人、AR/VR
+**评分**: ⭐ 8/10 | **端侧价值**: 🔥 7/10 | **架构**: RAG + Agent
 
 ### 推荐理由
-首个**训练无关**的常数成本流式3D重建框架，通过自选择缓存和动态锚点保护，实现无限长度视频的O(1)内存占用。
+解决现有搜索智能体累积无关/噪声文档和依赖稀疏强化学习信号的问题。SE-Search-3B相比Search-R1**绝对提升10.8点**，**相对增益33.8%**。
 
 ### 核心贡献
-- **自选择缓存**: 基于FFN残差幅度压缩KV缓存，兼容FlashAttention
-- **动态锚点保护**: 保护坐标关键token防止几何漂移
-- **训练无关**: 无需重新训练即可应用于现有模型
+- **记忆净化**: Think-Search-Memorize策略保留关键证据过滤无关内容
+- **原子查询训练**: 促使更短且多样的查询
+- **密集奖励**: 提供细粒度反馈加速训练
 
 ### 技术亮点
-- VRAM占用与序列长度无关
-- 支持室内、室外、超长序列
-- 保持SOTA 3D几何精度
+- 单跳和多跳QA基准测试表现优异
+- 3B模型超越强基线
 
 ### 端侧意义
-流式3D重建在端侧设备上面临内存无限增长的难题，OVGGT的O(1)内存保证使其成为端侧SLAM和AR应用的理想选择。
+搜索和RAG是端侧应用的核心能力，该研究提升了端侧检索质量。
 
 ---
 
-## 8. FTSplat: 前馈三角形Splatting网络
+## 10. AI+HW 2035: 塑造下一个十年
 
-**arXiv**: [2603.05932](https://arxiv.org/abs/2603.05932)
-**作者**: Xiong Jinlin, Li Can, Shen Jiawei, Qi Zhigang, Sun Lei, Zhao Dongyang
-**分类**: cs.CV, cs.RO
-**发布时间**: 2026-03-06
+**arXiv**: [2603.05225](https://arxiv.org/abs/2603.05225)
+**作者**: Deming Chen, Jason Cong, Azalia Mirhoseini, Christos Kozyrakis, Subhasish Mitra, Jinjun Xiong, Cliff Young, Anima Anandkumar, Michael Littman, Aron Kirschen, Sophia Shao, Serge Leef, Naresh Shanbhag, Dejan Milojicic, Michael Schulte, Gert Cauwenberghs, Jerry M. Chow, Tri Dao, Kailash Gopalakrishnan, Richard Ho, Hoshik Kim, Kunle Olukotun, David Z. Pan, Mark Ren, Dan Roth, Aarti Singh, Yizhou Sun, Yusu Wang, Yann LeCun, Ruchir Puri
+**分类**: cs.AI, cs.AR
+**发布时间**: 2026-03-03
 
-**评分**: ⭐ 7/10 | **端侧价值**: 🔥 7/10 | **架构**: 3D重建
-**应用场景**: 机器人、仿真
-
-### 推荐理由
-首个**前馈三角形splatting**框架，无需逐场景优化，单次前向传播生成可直接用于仿真的连续三角形表面。
-
-### 核心贡献
-- **像素对齐三角形生成**: 直接从多视图图像预测三角形
-- **相对3D点云监督**: 增强几何学习稳定性和一致性
-- **仿真就绪**: 输出可直接用于标准图形和机器人仿真器
-
-### 技术亮点
-- 无需逐场景优化
-- 无需后处理
-- 与3DGS相比具有显式流形几何
-
-### 端侧意义
-端侧机器人需要实时3D重建能力，FTSplat的前馈特性使其能够快速部署到端侧设备，支持实时仿真和规划。
-
----
-
-## 9. WanderDream: 具身场景中的仿真式心智探索
-
-**arXiv**: [2603.06445](https://arxiv.org/abs/2603.06445)
-**作者**: Ruiping Liu, Yufan Chen, Yuheng Zhang, Junwei Zheng, Kunyu Peng, Chengzhi Wu, Chenguang Huang, Di Wen, Jiaming Zhang, Kailun Yang, Rainer Stiefelhagen
-**分类**: cs.CV
-**发布时间**: 2026-03-06
-
-**评分**: ⭐ 7/10 | **端侧价值**: 🔥 8/10 | **架构**: World Model
-**应用场景**: 具身AI、机器人、辅助视障
+**评分**: ⭐ 9/10 | **端侧价值**: 🔥 10/10 | **架构**: 系统级
 
 ### 推荐理由
-首个大规模**心智探索仿真数据集**，包含15.8K全景视频和158K问答对，支持无需主动探索的场景推理。
+**30位顶级专家**联合发布的未来十年AI+硬件路线图，提出以**能效扩展**为核心目标：10年内实现**1000x能效提升**，从"智能扩展"转向"能效扩展"。
 
 ### 核心贡献
-- **WanderDream-Gen**: 15.8K全景视频，1,088真实场景
-- **WanderDream-QA**: 158K问答对，覆盖起点、路径、终点
-- **世界模型基准**: 验证World Model在心智探索中的有效性
+- **1000x能效目标**: 训练和推理能效提升1000倍
+- **云-边-物端到端**: 能量感知、自优化系统
+- **民主化访问**: 普惠先进AI基础设施
+- **以人为中心**: 将人类中心原则嵌入智能系统设计
 
-### 技术亮点
-| 数据集 | 规模 |
-|--------|------|
-| 全景视频 | 15.8K |
-| 真实场景 | 1,088 |
-| 问答对 | 158K |
-
-### 端侧意义
-端侧机器人常面临无法主动探索的约束（安全、物理限制），WanderDream提供的心智探索能力对端侧具身AI至关重要。
-
----
-
-## 10. OVOR: 基于CLIP的开放词汇目标识别
-
-**arXiv**: [2603.05962](https://arxiv.org/abs/2603.05962)
-**作者**: Wei Yu Chen, Ying Dai
-**分类**: cs.CV
-**发布时间**: 2026-03-06
-
-**评分**: ⭐ 7/10 | **端侧价值**: 🔥 7/10 | **架构**: CLIP + CNN/MLP
-
-### 推荐理由
-简化的两阶段开放词汇目标识别框架，无需复杂重训练和人工标注，在COCO、VOC、ADE20K上达到SOTA。
-
-### 核心贡献
-- **两阶段策略**: 目标分割 + 识别，简化系统复杂度
-- **CNN/MLP编码**: 降低对CLIP的依赖，提升编码灵活性
-- **SVD共享空间**: 通过奇异值分解构建视觉-文本共享表征空间
-
-### 技术亮点
-- 无需训练即可使用CLIP编码
-- CNN/MLP编码提供灵活性
-- 在多个基准上超越现有方法
+### 技术路线
+- 算法创新
+- 硬件进步
+- 软件抽象
+- 跨层优化
 
 ### 端侧意义
-开放词汇能力是端侧视觉模型的关键需求，OVOR的简化框架和训练-free特性使其易于部署到端侧设备。
+**端侧AI的十年蓝图**，明确能效是端侧发展的核心驱动力。
 
 ---
 
@@ -300,27 +288,27 @@ MoE架构在端侧部署面临专家内存占用大的挑战，MoEless的Serverl
 
 | 排名 | 论文 | 端侧价值 | 核心亮点 |
 |------|------|----------|----------|
-| 1 | FlashPrefill | 🔥 9/10 | 27.78x长文本加速 |
-| 2 | Penguin-VL | 🔥 9/10 | 2B/8B小模型突破 |
-| 3 | OVGGT | 🔥 9/10 | O(1)流式3D重建 |
-| 4 | MoEless | 🔥 8/10 | 43%延迟降低 |
-| 5 | VG3S | 🔥 8/10 | 12.6%占据预测提升 |
-| 6 | WanderDream | 🔥 8/10 | 心智探索数据集 |
-| 7 | Omni-Diffusion | 🔥 7/10 | Diffusion多模态 |
-| 8 | FTSplat | 🔥 7/10 | 前馈三角形重建 |
-| 9 | OVOR | 🔥 7/10 | 开放词汇识别 |
-| 10 | MLLM分类评估 | 🔥 6/10 | 评估协议研究 |
+| 1 | FlashAttention-4 | 🔥 10/10 | Blackwell 1.3x加速 |
+| 2 | AI+HW 2035 | 🔥 10/10 | 十年路线图/1000x能效 |
+| 3 | Phi-4-reasoning-vision | 🔥 9/10 | 15B开源小模型 |
+| 4 | Memex(RL) | 🔥 9/10 | 长程无损记忆 |
+| 5 | Reasoning Theater | 🔥 8/10 | CoT早退80% tokens |
+| 6 | The Spike and Sink | 🔥 8/10 | Attention机制解析 |
+| 7 | AriadneMem | 🔥 8/10 | 77.8%运行时减少 |
+| 8 | AgentIR | 🔥 7/10 | 推理感知检索 |
+| 9 | SE-Search | 🔥 7/10 | 搜索智能体 |
+| 10 | MOOSE-Star | 🔥 6/10 | 科学发现框架 |
 
 ### 技术趋势观察
 
-1. **长文本优化**: FlashPrefill代表了长上下文端侧部署的关键突破
-2. **MoE端侧化**: MoEless探索了Serverless在端侧MoE推理中的应用
-3. **小模型突破**: Penguin-VL证明了视觉表征质量比模型规模更重要
-4. **3D感知**: VG3S和OVGGT推动了端侧3D视觉的发展
-5. **架构创新**: Omni-Diffusion探索了Diffusion作为多模态骨干的可能性
+1. **推理加速**: FlashAttention-4和Reasoning Theater代表两个方向的突破
+2. **长程记忆**: Memex和AriadneMem解决上下文瓶颈
+3. **小模型崛起**: Phi-4-reasoning-vision证明小模型也能打
+4. **能效优先**: AI+HW 2035确立端侧发展核心方向
+5. **Agent爆发**: AgentIR、SE-Search等检索/搜索Agent
 
 ### 重点关注
 
-**🔥 强烈推荐关注**: FlashPrefill、Penguin-VL、OVGGT
+**🔥 强烈推荐关注**: FlashAttention-4、Phi-4-reasoning-vision、AI+HW 2035
 
-这三篇论文分别在**长文本推理**、**小模型VLM**、**流式3D重建**三个关键领域取得了突破性进展，对端侧AI部署具有直接且重要的价值。
+这三篇论文分别在**推理效率**、**小模型部署**、**十年路线图**三个关键领域最具端侧落地价值。

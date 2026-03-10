@@ -1,0 +1,256 @@
+Q1: 这篇论文试图解决什么问题？
+这篇论文试图解决现有基于大语言模型（LLM）的搜索代理（Search Agents）在自主信息检索过程中面临的三个关键挑战：
+## 1. 噪声搜索结果积累
+现有方法在检索时通常直接获取前K个文档，其中包含大量不相关或嘈杂的内容，导致模型需要在噪声信息上进行推理。虽然部分方法（如MAIN-RAG）通过多LLM过滤来缓解此问题，但其仅适用于免训练的RAG设置，无法在强化学习（RL）训练过程中动态优化。
+## 2. 搜索多样性有限与搜索频率探索不足
+先前方法（如Search-R1）往往在不同搜索步骤中生成相似的查询，限制了探索多样化证据的能力。此外，现有方法缺乏对&quot;何时搜索&quot;和&quot;搜索什么&quot;的细粒度控制，导致代理可能产生过长查询（无论问题复杂度如何），或在简单问题上进行不必要的搜索，而在复杂多跳问题上搜索不足。
+## 3. 稀疏的进化反馈信号
+现有基于RL的方法（如Search-R1）仅在最终答案层面提供二元监督信号，缺乏对查询制定、格式化规范以及适当搜索频率的显式奖励。这种稀疏反馈导致训练不稳定，且难以教会代理形成良好的搜索行为模式（如生成简洁查询、避免重复搜索）。
+## 解决方案概述
+针对上述问题，论文提出**SE-Search**（Self-Evolving Search），通过三个核心机制实现代理的自进化：
+- **记忆净化（Memory Purification）**：通过$&lt;\text{memory}&gt;$标签显式提取并存储关键证据，过滤检索文档中的噪声，避免无关信息在多轮搜索中累积
+- **原子查询（Atomic Query）**：约束查询长度并强制查询间多样性，鼓励生成多个简短、差异化的原子查询以覆盖不同证据维度
+- **密集奖励（Dense Rewards）**：设计四维度细粒度奖励函数（查询奖励、记忆奖励、格式奖励、结果奖励），提供步骤级反馈以加速训练收敛并规范代理行为
+实验表明，该方法在单跳和多跳问答基准上均显著优于现有基线（如Search-R1），在复杂多跳任务上提升尤为明显（如HotpotQA提升11.1%，Bamboogle提升23.2%）。
+Q2: 有哪些相关研究？
+根据论文第5节（Related Works），相关研究主要分为以下三个方向：
+## 1. 检索增强生成（Retrieval-Augmented Generation, RAG）
+RAG通过将生成模型与外部知识库相结合，减少知识密集型任务中的事实错误（Lewis et al., 2020）。现有综述（Gao et al., 2023）总结了四种常见范式：
+- **顺序RAG**（Sequential RAG）
+- **分支RAG**（Branching RAG）  
+- **条件RAG**（Conditional RAG）
+- **循环RAG**（Loop RAG）
+传统RAG通常采用固定的&quot;先检索后生成&quot;（retrieve-then-generate）工作流，模型无法在推理过程中自主决定何时进行搜索。与之不同，SE-Search针对**自主搜索行为**进行优化，通过显式记忆机制和探索策略实现动态信息获取。
+## 2. 搜索代理（Search Agent）
+搜索代理扩展了RAG范式，允许在推理过程中调用搜索工具进行多步骤信息检索：
+**自主检索架构**：近期工作如Search-o1（Li et al., 2025c）、WebThinker（Li et al., 2025e）和WebDancer（Wu et al., 2025）支持在推理过程中自主调用检索工具。
+**训练策略优化**：为改进搜索行为，研究者提出了多种强化学习方法：
+- **Search-R1**（Jin et al., 2025）：使用规则奖励训练代理与搜索引擎交互
+- **ReSearch**（Chen et al., 2025）：通过强化学习优化搜索策略
+- **AutoRefine**（Shi et al., 2025）：在思考过程中自主检索并优化
+- **WebSailor**（Li et al., 2025b）：针对超人类推理的Web代理
+**现有局限**：上述方法共同面临的问题是**检索上下文中的噪声累积**——随着多步搜索进行，无关文档会不断累积，削弱后续推理能力。SE-Search通过**Think-Search-Memorize**（思考-搜索-记忆）策略和**Atomic Query**（原子查询）机制，在证据选择和保留方面进行显式优化，从而解决噪声累积问题。
+## 3. 强化学习（Reinforcement Learning）
+强化学习为改进大语言模型行为提供了通用框架：
+**基础算法**：
+- **PPO**（Proximal Policy Optimization）（Schulman et al., 2017）：经典的策略梯度方法
+- **DPO**（Direct Preference Optimization）（Rafailov et al., 2023）：直接利用偏好数据优化
+- **GRPO**（Group Relative Policy Optimization）（Shao et al., 2024）：采用组归一化奖励并避免单独训练价值网络
+**改进与扩展**：
+- **DAPO**（Dynamic Sampling Policy Optimization）（Yu et al., 2025）：提升训练稳定性和效率
+- **GSPO**（Group Sequence Policy Optimization）（Zheng et al., 2025）：针对长序列的优化
+SE-Search基于GRPO框架，创新性地设计了**细粒度奖励函数**（Dense Rewards），将搜索代理的优化目标分解为查询质量、记忆准确性、格式规范和答案正确性四个维度，从而在稀疏的终端奖励之外提供更密集的步骤级反馈信号。
+Q3: 论文如何解决这个问题？
+论文通过提出**SE-Search**（Self-Evolving Search）框架，从三个维度系统性地解决搜索代理面临的挑战。该方法采用**Think-Search-Memorize**策略，结合记忆净化、原子查询生成和密集奖励设计，实现代理在噪声环境下的自适应信息获取与精细化行为优化。
+### 1. 记忆净化（Memory Purification）
+**解决目标**：缓解多轮搜索中噪声文档的累积问题。
+**机制描述**：
+不同于传统方法将检索文档直接输入模型，SE-Search要求代理在每次搜索后主动提取关键信息并存储于特殊标记$&lt;\text{memory}&gt;$中。记忆更新过程建模为：
+$$m_t = \pi_\theta(m_{t-1} \mid k_t)$$
+其中$m_t$表示第$t$步的记忆内容，$k_t$为当前检索获得的文档。该过程通过自回归方式迭代更新，仅保留与问题相关的证据，过滤无关噪声。
+**记忆奖励设计**：
+采用覆盖精确匹配（Cover Exact Match, CEM）量化记忆质量：
+$$R_{\text{mem}} = \mathbb{I}(\hat{a} \cap m = \hat{a})$$
+该奖励函数显式鼓励代理从嘈杂的检索文档中选择性提取包含正确答案信息的内容，而非简单堆砌原始文档。
+### 2. 原子查询（Atomic Query）
+**解决目标**：提升查询多样性并优化搜索频率（避免过度搜索或搜索不足）。
+**机制描述**：
+通过约束查询长度和强制多样性，引导代理生成多个简短、差异化的原子查询。算法通过序列匹配计算查询间相似度：
+$$\text{ratio}(q_i, q_j) = \frac{2 \sum_k \ell_k}{|q_i| + |q_j|}$$
+其中$\ell_k$为匹配段长度。仅当相似度低于阈值$T$且长度在$[L_{\min}, L_{\max}]$范围内时，查询才被计入有效原子查询集$Q_v$。
+**查询奖励设计**：
+基于有效原子查询数$N_{\text{query}}$设计双目标奖励：
+$$
+R_{\text{query}} = 
+\begin{cases} 
+-\max(1, N_{\text{query}}) &amp; \text{if answer is correct} \\
+\min(T_{\max}, N_{\text{query}}) &amp; \text{if answer is incorrect}
+\end{cases}
+$$
+该奖励实现两个功能：当答案正确时惩罚冗余搜索（鼓励效率），当答案错误时奖励更多搜索尝试（鼓励探索），从而自适应地调节搜索频率。
+### 3. 密集奖励（Dense Rewards）
+**解决目标**：替代稀疏的终端反馈，提供细粒度的步骤级监督信号。
+**奖励组成**：
+整体密集奖励由四部分构成：
+$$R_{\text{Dense}} = R_{\text{ans}} + \alpha \cdot R_{\text{mem}} + \gamma \cdot \mu \cdot R_{\text{query}} + \gamma \cdot R_{\text{format}}$$
+- **结果奖励**（$R_{\text{ans}}$）：采用F1分数替代二元精确匹配，提供梯度化反馈：
+  $$R_{\text{ans}} = \frac{2|a \cap \hat{a}|}{|a| + |\hat{a}|}$$
+  
+- **格式奖励**（$R_{\text{format}}$）：惩罚违反预定义结构的行为（如超过最大搜索轮次$T_{\max}$、无效动作、特殊标记不匹配）：
+  $$R_{\text{format}} = -1 \cdot N_{\text{rules}}$$
+- **衰减机制**：查询奖励随训练进行逐渐衰减以稳定强化学习：
+  $$
+  \mu = 
+  \begin{cases} 
+  \frac{1}{2}(\cos(\frac{t_{\text{iter}}}{t_{\text{decay}}}\pi) + 1) &amp; t_{\text{iter}} \leq t_{\text{decay}} \\
+  0 &amp; t_{\text{iter}} &gt; t_{\text{decay}}
+  \end{cases}
+  $$
+### 4. 训练框架（Agentic Reinforcement Learning）
+采用**Group Relative Policy Optimization (GRPO)**进行优化，避免单独训练价值网络。对于问题$Q$，策略模型采样$G$个轨迹，通过组内奖励归一化估计优势：
+$$\hat{A}_{i,t} = \frac{R_{i,t} - \text{mean}(R_t)}{\text{std}(R_t)}$$
+损失函数结合重要性采样裁剪与KL散度约束：
+$$
+\mathcal{L}_{\text{GRPO}}(\theta) = \mathbb{E}_{Q \sim \mathcal{D}, y_i \sim \pi_\theta} \left[ \frac{1}{G} \sum_{i=1}^G \frac{1}{|y_i|} \sum_{t=1}^{|y_i|} \min\left(r_{i,t}\hat{A}_{i,t}, \text{clip}(r_{i,t}, 1-\epsilon, 1+\epsilon)\hat{A}_{i,t}\right) - \beta \text{KL}[\pi_\theta \| \pi_{\text{ref}}] \right]
+$$
+其中$r_{i,t} = \frac{\pi_\theta(y_{i,t} \mid Q, y_{i,&lt;t})}{\pi_{\theta_{\text{old}}}(y_{i,t} \mid Q, y_{i,&lt;t})}$为概率比率。
+通过上述设计，SE-Search实现了从&quot;原始文档堆砌&quot;到&quot;精炼知识记忆&quot;、从&quot;单一长查询&quot;到&quot;多样原子查询&quot;、从&quot;稀疏终端奖励&quot;到&quot;密集步骤反馈&quot;的进化，显著提升了复杂问答任务中的检索效率与准确性。
+Q4: 论文做了哪些实验？
+论文在第4节（Experiments）中进行了系统的实验验证，涵盖性能对比、组件消融、扩展性分析及行为分析等多个维度。
+### 4.1 实验设置
+**基准数据集**：
+- **单跳问答**：Natural Questions (NQ)、TriviaQA、PopQA
+- **多跳问答**：HotpotQA、2WikiMultihopQA、Musique、Bamboogle
+**对比基线**：
+- **无检索方法**：直接生成、SFT、R1系列训练
+- **工作流检索方法**：Naive RAG、IRCoT（交替检索与思维链）
+- **代理检索方法**：Search-o1、Search-R1、ReSearch、ZeroSearch、StepSearch、O2-Searcher、AutoRefine、InForage、CriticSearch
+**实现细节**：基于Qwen2.5-3B/7B/14B，使用E5-base-v2作为检索器，每查询返回Top-3文档；采用GRPO算法训练，超参数包括最大搜索轮次$T_{\max}=5$，查询长度约束$[20, 120]$字符，相似度阈值$T=0.3$等。
+### 4.2 主要性能对比（Main Performance）
+在七个基准上的Exact Match (EM)准确率对比显示（表1）：
+**核心结果**：
+- SE-Search-3B在平均性能上达到**0.420**，较Search-R1（0.312-0.336）实现**10.8个百分点的绝对提升**和**33.8%的相对增益**
+- 在复杂多跳任务上优势尤为显著：
+  - HotpotQA：较AutoRefine提升4.5个百分点（相对增益11.1%）
+  - Bamboogle：较AutoRefine提升8个百分点（相对增益23.2%）
+  - 2Wiki和Musique也取得显著领先
+这表明记忆净化机制和原子查询策略能有效处理需要多步证据整合的复杂查询。
+### 4.3 消融研究（Ablation Studies）
+通过逐步添加组件验证各机制贡献（表2）：
+| 配置 | 关键发现 |
+|------|---------|
+| **Search-R1基线** | 平均EM 0.344 |
+| **+ Memory Purification (MP)** | Musique提升5.0分（+71.43%），Bamboogle提升9.1分（+53.85%）；验证了在复杂多跳任务中过滤噪声、保留关键信息的有效性 |
+| **+ Atomic Query (AQ)** | 在MP基础上，2Wiki提升15.87%，Musique提升35.83%，Bamboogle提升42.69%；显著增强多步搜索能力 |
+| **+ Dense Rewards (DR)** | 最终配置（SE-Search），在七个基准上全面领先，平均EM达到0.410（相对基线+19.2%） |
+**结论**：每个组件均提供一致的性能增益，且对多跳问答任务的提升尤为显著。
+### 4.4 泛化性与可扩展性（Generalization and Scalability）
+验证模型在不同规模下的表现（表3）：
+| 模型规模 | 平均EM | 平均F1 | 观察 |
+|---------|--------|--------|------|
+| **3B** | 0.420 | 0.507 | 基线配置 |
+| **7B** | 0.433 | 0.519 | 性能随规模提升 |
+| **14B** | **0.472** | **0.553** | 符合缩放定律（Scaling Law），大部分数据集性能持续提升 |
+结果表明SE-Search具有良好的扩展性，随着骨干模型容量增加，检索增强效果同步提升。
+### 4.5 附加分析（Additional Analysis）
+**（1）搜索频率演化**（图3）：
+- 训练过程中，平均搜索调用次数从1.53次降至1.32次（减少14%），而准确率从0.36提升至0.41（提升14%）
+- 表明代理学会**更高效的搜索策略**：通过原子查询减少冗余检索，同时通过记忆净化提高单轮搜索的信息质量
+- 在复杂问题上（多跳）平均调用1.54次，简单问题（单跳）接近1.0次，显示自适应搜索频率调节能力
+**（2）查询特征分析**（图4a, 4b）：
+- **查询长度**：SE-Search平均约50字符，显著短于AutoRefine（~65）和Search-R1（~90），表明生成更简洁、聚焦的查询
+- **查询多样性**：基于公式(14)的相似度比率约0.5，低于AutoRefine的0.6，证明原子查询策略有效减少了查询冗余，提升了检索结果的多样性
+**（3）记忆内容准确性**（图4c）：
+- 训练末期记忆的CEM（Cover Exact Match）达到约0.65，表明代理成功从嘈杂文档中提取并存储与答案相关的关键证据
+- 训练初期搜索频率较高（蓝色曲线图3b），对应于&quot;探索-净化&quot;阶段：代理主动发起更多搜索以筛选和积累高质量记忆
+**（4）密集奖励的影响**（图4c）：
+- 相较于无密集奖励的配置，引入格式奖励和F1-based结果奖励后：
+  - 记忆内容准确性在早期训练阶段即显著提升，表明代理更快学会记录有效证据
+  - 格式奖励抑制了无效输出，减少了非生产性探索轨迹，加速收敛
+  - F1奖励提供的梯度化反馈（相对于二元EM）稳定了训练过程
+### 4.6 案例研究（Appendix A.4）
+通过具体案例展示代理行为：
+- **表5**：展示复杂问题分解为原子查询序列（如将电影导演比较问题分解为4个原子查询：分别查询两位导演、再分别查询两位导演的逝世日期）
+- **表6、表7**：展示完整的Think-Search-Memorize轨迹，突出显示代理如何从原始文档（蓝色高亮）中提取关键证据存入记忆，并最终生成答案
+这些案例直观验证了SE-Search在**自规划**（查询分解）、**自记忆**（信息提取）和**自律**（遵循格式规范）方面的能力。
+Q5: 有什么可以进一步探索的点？
+基于论文第7节（Limitations）及全文内容，可进一步探索的研究方向包括：
+## 1. 实时动态信息检索
+当前SE-Search依赖**静态语料库**（基于Karpukhin et al., 2020的维基百科转储），无法获取互联网实时信息。未来可探索：
+- 与真实搜索引擎API（如Google、Bing）的集成机制
+- 处理实时信息中的**时效性冲突**（stale information detection）
+- 动态网页内容的**增量索引更新**策略
+## 2. 超复杂任务适配
+论文指出对**BrowseComp**（Wei et al., 2025）等高度复杂任务探索不足。可扩展至：
+- 需要**数十步交互**的深度研究任务（Deep Research）
+- 跨多个网站的长程信息整合（Long-horizon Information Synthesis）
+- 涉及**多工具协同**的场景（如搜索+代码执行+数据库查询）
+## 3. 奖励函数的自动化设计
+当前密集奖励依赖人工设计的超参数（$\alpha=0.1$, $\gamma=0.01$, 衰减步数$t_{\text{decay}}=150$等）。可研究：
+- **自动奖励塑形**（Automatic Reward Shaping）：通过元学习或进化算法自动优化奖励权重
+- **可学习奖励模型**（Learned Reward Models）：替代规则-based的CEM和F1计算，训练判别器评估记忆质量和查询效用
+- **多目标优化框架**：平衡查询多样性、记忆准确性与答案正确性的帕累托前沿
+## 4. 记忆机制的增强
+当前记忆净化采用简单的文本摘要（Eq. 7）：
+$$m_t = \pi_\theta(m_{t-1} \mid k_t)$$
+可探索更复杂的记忆架构：
+- **结构化记忆**：知识图谱（Knowledge Graph）或键值存储（Key-Value Memory）替代纯文本
+- **记忆检索增强**：允许代理在后续步骤中**回溯**（backtrack）并修正早期记忆
+- **跨会话记忆持久化**：实现长期知识积累（Cross-session Memory）
+## 5. 多模态检索扩展
+当前框架仅处理文本文档。可扩展至：
+- **视觉-语言检索**：处理图表、图像中的信息（如科学论文中的实验结果图）
+- **表格推理**：针对结构化数据（Wikipedia Tables, Wikidata）的专门化原子查询策略
+- **视频内容检索**：从视频字幕或视觉内容中提取证据
+## 6. 理论分析与可解释性
+论文主要基于实验验证，缺乏：
+- **收敛性保证**：分析GRPO在记忆-查询联合优化空间中的收敛性质
+- **样本复杂度**：量化原子查询多样性$N_{\text{query}}$与所需训练样本数的关系
+- **注意力可视化**：分析代理在记忆更新过程中如何分配注意力以过滤噪声
+## 7. 与先进RL算法的结合
+当前采用GRPO（Shao et al., 2024），可尝试：
+- **DAPO**（Dynamic Sampling Policy Optimization, Yu et al., 2025）：动态调整困难样本采样率
+- **GSPO**（Group Sequence Policy Optimization, Zheng et al., 2025）：针对长序列生成（长轨迹$\tau$）的优化
+- **分层RL**（Hierarchical RL）：将&quot;查询规划&quot;（宏观）与&quot;记忆提取&quot;（微观）解耦为不同策略层级
+## 8. 鲁棒性与安全性
+- **对抗性检索**：当搜索引擎返回**对抗性内容**（如SEO优化的错误信息）时，记忆净化机制的鲁棒性
+- **隐私保护**：在多轮搜索中避免敏感信息泄露的差分隐私机制
+- **检索失败恢复**：当所有检索文档均不相关时的**主动探索策略**（Active Exploration）
+Q6: 总结一下论文的主要内容
+论文提出**SE-Search**（Self-Evolving Search），一种通过记忆净化、原子查询生成与密集奖励设计实现自进化的搜索代理框架，旨在解决现有检索增强生成（RAG）系统中噪声累积、查询多样性不足及强化学习信号稀疏等关键问题。
+### 1. 研究背景与问题定义
+现有搜索代理方法面临三重挑战：
+- **噪声检索结果**：多轮搜索中无关文档持续累积，干扰后续推理
+- **查询多样性局限**：生成相似查询导致证据探索不充分，且缺乏对搜索频率的自适应调节
+- **稀疏反馈信号**：传统方法仅依赖最终答案的二元奖励，缺乏对查询质量、格式化规范及证据提取过程的细粒度监督
+形式化地，传统RAG定义为：
+$$a = \pi_\theta(Q \mid k), \quad k = \mathcal{R}(Q \mid \mathcal{D})$$
+而SE-Search将其扩展为动态多步交互范式：
+$$a = \pi_\theta\left(Q \mid \{r_t \otimes k_t\}_{t=1}^T\right), \quad k_t = \mathcal{R}(q_t \mid \mathcal{D}), \quad q_t \in r_t$$
+### 2. 核心方法论
+SE-Search通过三个相互协同的机制实现代理行为的自进化：
+#### 2.1 记忆净化（Memory Purification）
+采用**Think-Search-Memorize**策略，要求代理在每次检索后主动提取关键信息并更新记忆，而非直接处理原始文档。记忆更新过程建模为：
+$$m_t = \pi_\theta(m_{t-1} \mid k_t)$$
+通过覆盖精确匹配（CEM）定义记忆奖励，显式鼓励从噪声文档中筛选有效证据：
+$$R_{\text{mem}} = \mathbb{I}(\hat{a} \cap m = \hat{a})$$
+#### 2.2 原子查询（Atomic Query）
+约束查询长度在$[L_{\min}, L_{\max}]$范围内，并通过序列匹配强制查询间多样性。定义相似度比率为：
+$$\text{ratio}(q_i, q_j) = \frac{2 \sum_k \ell_k}{|q_i| + |q_j|}$$
+仅当比率低于阈值$T$时视为有效原子查询。对应奖励函数根据答案正确性自适应调节搜索频率：
+$$
+R_{\text{query}} = 
+\begin{cases} 
+-\max(1, N_{\text{query}}) &amp; \text{if correct} \\
+\min(T_{\max}, N_{\text{query}}) &amp; \text{if incorrect}
+\end{cases}
+$$
+#### 2.3 密集奖励（Dense Rewards）
+构建四维细粒度奖励函数：
+$$R_{\text{Dense}} = R_{\text{ans}} + \alpha \cdot R_{\text{mem}} + \gamma \cdot \mu \cdot R_{\text{query}} + \gamma \cdot R_{\text{format}}$$
+其中：
+- $R_{\text{ans}}$采用F1分数替代二元精确匹配，提供梯度化反馈：$R_{\text{ans}} = \frac{2|a \cap \hat{a}|}{|a| + |\hat{a}|}$
+- $R_{\text{format}} = -1 \cdot N_{\text{rules}}$惩罚格式违规（如超轮次、无效动作）
+- $\mu$为余弦衰减因子，逐步降低查询奖励权重以稳定训练
+#### 2.4 训练框架
+采用**Group Relative Policy Optimization (GRPO)**优化策略，避免单独训练价值网络。目标函数为：
+$$
+\mathcal{L}_{\text{GRPO}}(\theta) = \mathbb{E}_{Q \sim \mathcal{D}, y_i \sim \pi_\theta} \left[ \frac{1}{G} \sum_{i=1}^G \frac{1}{|y_i|} \sum_{t=1}^{|y_i|} \min\left(r_{i,t}\hat{A}_{i,t}, \text{clip}(r_{i,t}, 1-\epsilon, 1+\epsilon)\hat{A}_{i,t}\right) - \beta \text{KL}[\pi_\theta \| \pi_{\text{ref}}] \right]
+$$
+其中优势函数通过组内归一化估计：
+$$\hat{A}_{i,t} = \frac{R_{i,t} - \text{mean}(R_t)}{\text{std}(R_t)}$$
+### 3. 实验验证
+在七个问答基准（NQ、TriviaQA、PopQA、HotpotQA、2Wiki、Musique、Bamboogle）上的实验表明：
+- **性能优势**：SE-Search-3B达到平均EM 0.420，较Search-R1实现**33.8%的相对增益**（绝对提升10.8个百分点）
+- **复杂任务突破**：在多跳问答上提升尤为显著，HotpotQA提升11.1%，Bamboogle提升23.2%
+- **组件有效性**：消融研究显示记忆净化使Musique提升71.43%，原子查询使Bamboogle提升42.69%
+- **扩展性**：符合缩放定律，从3B到14B模型性能持续提升（EM从0.420增至0.472）
+- **行为分析**：训练过程中搜索调用次数减少14%（1.53→1.32）的同时准确率提升14%，证明代理学会更高效的信息获取策略；在复杂问题上自适应地增加搜索频率（多跳1.54次 vs 单跳1.0次）
+### 4. 主要贡献
+- 提出**SE-Search框架**，通过自记忆、自探索与自监督实现搜索代理的自主进化
+- 引入**记忆净化机制**，有效过滤多轮检索中的噪声累积
+- 设计**原子查询策略**，平衡查询多样性与搜索效率
+- 构建**密集奖励体系**，提供步骤级细粒度反馈以稳定强化学习训练
+该方法显著提升了大型语言模型在复杂知识发现任务中的自主信息检索能力，特别是在需要多步推理的问答场景中表现出卓越的证据整合与噪声抑制能力。
+Q7: 想要进一步了解论文
+以上只是了解一篇论文的几个基本FAQ。如果你还想与Kimi进一步讨论该论文，请点击 这里  为你跳转Kimi AI网页版，并启动一个与该论文相关的新会话。
